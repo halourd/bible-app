@@ -7,7 +7,18 @@ const SNavBar = StyleSheet.create({
         flexDirection: 'row',
         marginHorizontal: 30,
         borderRadius: 10,
-        position: 'relative'
+        position: 'relative',
+
+        shadowColor: "#000",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        
+        elevation: 3, 
     },
     buttonContainer: {
        padding: 30,

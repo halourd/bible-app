@@ -17,6 +17,7 @@ export default class App extends Component {
           <Stack.Screen 
             name="Bible"
             component={Bible}
+
           />        
         </Stack.Navigator>
     </NavigationContainer>

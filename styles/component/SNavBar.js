@@ -8,28 +8,30 @@ const SNavBar = StyleSheet.create({
         marginHorizontal: 30,
         borderRadius: 10,
         position: 'relative',
-        paddingHorizontal: 40,
+        paddingHorizontal: 30,
 
-        shadowColor: "#000",
-        shadowColor: "#000",
+        shadowColor: "#203239",
         shadowOffset: {
-            width: 0,
-            height: 1,
+          width: 0,
+          height: 5,
         },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 3, 
+        shadowOpacity:  0.24,
+        shadowRadius: 13.84,
+        elevation: 17,
+        top: '145%'
     },
     buttonContainer: {
-       padding: 20,
+       padding: 17,
        width: '33.3%',
-       alignItems: 'center'
+       alignItems: 'center',
+       borderRadius: 10,
+
 
     },
     iconSvg: {
-        width: 30,
-        height: 30,
-        marginBottom: 5
+        width: 34,
+        height: 34,
+        marginBottom: 2,
     },
     label: {
         color: "#eeedde",

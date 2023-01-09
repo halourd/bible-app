@@ -5,28 +5,22 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Bible from './screens/Bible'
 const Stack = createStackNavigator();
 
-export default function App() {
+export default class App extends Component {
+  render(){
   return (
-    <Text>
-      Hello!
-    </Text>
-    // <NavigationContainer>
-    //     <StatusBar style="auto" />
-    //     <Stack.Navigator>
-    //       <Stack.Screen 
-    //         name="Home"
-    //         component={""}
-    //         options={{}}
-    //       />
-    //       <Stack.Screen 
-    //         name="Bible"
-    //         component={""}
-    //         options={{}}
-    //       />          
-    //     </Stack.Navigator>
-    // </NavigationContainer>
+    <NavigationContainer>
+        <StatusBar style="auto" />
+        <Stack.Navigator>
+          <Stack.Screen 
+            name="Bible"
+            component={Bible}
+          />        
+        </Stack.Navigator>
+    </NavigationContainer>
   );
+}
 }
 

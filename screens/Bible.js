@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import NavigationBar from '../components/NavigationBar';
 
 import bible_style from '../styles/SBible';
 
@@ -21,7 +22,9 @@ export default class Bible extends Component {
                         <Text>Chapter 1</Text>
                     </TouchableOpacity>
                 </View>
-
+                <NavigationBar 
+                    name="Home"
+                />
             </View>
         )
     }

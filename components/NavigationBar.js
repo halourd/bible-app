@@ -1,13 +1,17 @@
 import React, {Component} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-
 import SNavBar from '../styles/component/SNavBar'
+
 
 export default class NavigationBar extends Component {
     render(){
         return(
             <View style={[SNavBar.mainContainer, {...this.props.navBarStyle}]}>
                 <View style={SNavBar.buttonContainer}>
+                    <View style={{borderWidth: 1, borderColor: 'green'}}>
+                    {/* <SvgUri width="100%" height="100%" uri="../assets/icons/home.svg" /> */}
+
+                    </View>
                     <Text style={SNavBar.label}>{this.props.name}</Text>
                 </View>
 

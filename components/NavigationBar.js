@@ -1,6 +1,11 @@
 import React, {Component} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+<<<<<<< HEAD
 import SNavBar from '../styles/component/SNavBar'
+=======
+
+import SNavBar from '../styles/component/SNavbar'
+>>>>>>> component/navigation-bar
 
 
 export default class NavigationBar extends Component {

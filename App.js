@@ -6,7 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Bible from './screens/Bible'
+import Home from './screens/Home'
 const Stack = createStackNavigator();
+
 
 export default class App extends Component {
   render(){
@@ -14,11 +16,15 @@ export default class App extends Component {
     <NavigationContainer>
         <StatusBar style="auto" />
         <Stack.Navigator>
-          <Stack.Screen 
+          {/* <Stack.Screen 
             name="Bible"
             component={Bible}
-
-          />        
+          />   */}
+          <Stack.Screen 
+            name="Home"
+            component={Home}
+            options={{headerShown: false}}
+          />      
         </Stack.Navigator>
     </NavigationContainer>
   );

@@ -32,7 +32,38 @@ const bible_style = StyleSheet.create({
     },
     navBar: {
         zIndex: 1,
+    },
+
+    // Verse View
+
+    VerseViewContainer: {
+        flexDirection: 'row',
+        // borderWidth: 1,
+        // borderColor: 'red',
+        // paddingVertical: 15,
+        marginVertical: 5,
+    },
+    
+    verseNumber: {
+        // borderWidth: 1,
+        paddingHorizontal: 20,
+        justifyContent: 'center',
+    },
+    
+    verseText : {
+        // borderWidth: 1,
+        paddingVertical: 15,
+        paddingRight: 15,
+
+        flexShrink: 1
+    
+    },
+
+    verse_text: {
+        fontSize: 16,
     }
+    
+
 })
 
 export default bible_style;

@@ -4,7 +4,8 @@ import { StyleSheet } from "react-native";
 
 const bible_style = StyleSheet.create({
     container: {
-        position: 'relative'
+        position: 'relative',
+        flex: 1,
     },
     Selection: {
         flexDirection: 'row',

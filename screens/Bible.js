@@ -35,6 +35,146 @@ export default class Bible extends Component {
                             </Text>
                         </View>
                     </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>1</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>
+                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
+                            </Text>
+                        </View>
+                    </View>
 
                 </ScrollView>
 

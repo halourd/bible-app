@@ -9,6 +9,7 @@ const bible_style = StyleSheet.create({
     },
     Selection: {
         flexDirection: 'row',
+        paddingHorizontal: 35,
         // borderWidth: 1,
         // borderColor: 'green',
     },
@@ -42,7 +43,8 @@ const bible_style = StyleSheet.create({
         // borderWidth: 1,
         // borderColor: 'red',
         // paddingVertical: 15,
-        marginVertical: 5,
+        // borderWidth: 1,
+        // borderColor: 'red',
     },
     
     verseNumber: {
@@ -55,8 +57,7 @@ const bible_style = StyleSheet.create({
         // borderWidth: 1,
         paddingVertical: 15,
         paddingRight: 15,
-
-        flexShrink: 1
+        flexShrink: 1,
     
     },
 

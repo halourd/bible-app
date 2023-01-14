@@ -22,9 +22,12 @@ export default class Bible extends Component {
                         <Text>Chapter 1</Text>
                     </TouchableOpacity>
                 </View>
-                <NavigationBar 
-                    name="Home"
-                />
+
+
+                    <NavigationBar 
+                        name="Home"
+                    />
+
             </View>
         )
     }

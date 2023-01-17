@@ -36,7 +36,12 @@ const SNavBar = StyleSheet.create({
     },
     label: {
         color: "#eeedde",
-    }
+    },
+
+    use_fontFamily: {
+        fontFamily: 'ProductSans-Regular',
+    },
+
 })
 
 export default SNavBar;

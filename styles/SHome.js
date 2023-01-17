@@ -47,18 +47,19 @@ const home_style = StyleSheet.create ({
     verseTitle: {
         marginTop: 30,
         fontSize: 16,
-        fontFamily: 'ProductSans-Italic',
+
     },
     videosContainer: {
         justifyContent: 'center',
         padding: 20,
         marginTop: 5,
-        margin: 25
+        marginHorizontal: 25
     },
     vidHeader: {
-        fontSize: 20,
-        fontWeight: 'bold'
+        fontSize: 22,
+        fontFamily: 'ProductSans-Bold',
     },
+
 })
 
 export default home_style;

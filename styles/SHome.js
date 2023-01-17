@@ -20,7 +20,8 @@ const home_style = StyleSheet.create ({
     },
     homeNavbar: {
         marginTop: 50,
-        flexDirection: "row"
+        paddingVertical:20,
+        flexDirection: "row",
     },
     menu: {
         width: 25,
@@ -30,23 +31,23 @@ const home_style = StyleSheet.create ({
         marginLeft: 20 
     },
     title: {
-        fontSize: 20,
-        fontWeight: "bold"
+        fontSize: 24,
+        fontFamily: 'ProductSans-Bold',
     },
     votdContainer: {
         justifyContent: 'center',
         padding: 30,
-        marginTop: 10,
+        marginTop: 40,
         margin: 25
     },
     verse: {
-        fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 21,
         fontFamily: 'ProductSans-Bold'
     },
     verseTitle: {
         marginTop: 30,
-        fontStyle: 'italic'
+        fontSize: 16,
+        fontFamily: 'ProductSans-Italic',
     },
     videosContainer: {
         justifyContent: 'center',

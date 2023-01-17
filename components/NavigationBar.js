@@ -34,7 +34,11 @@ export default class NavigationBar extends Component {
                     </View>
                 </TouchableNativeFeedback>
 
-                <TouchableNativeFeedback useForeground={true}>
+                <TouchableNativeFeedback 
+                    onPress={()=>{
+                        this.props.navigation.navigate('Notes')
+                    }}
+                useForeground={true}>
                     <View style={SNavBar.buttonContainer}>
                         <Image style={SNavBar.iconSvg} source={require('../assets/pngs/note.png')}/>
                         <Text style={[SNavBar.label, SNavBar.use_fontFamily]}>Notes</Text>

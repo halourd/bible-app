@@ -9,7 +9,7 @@ import * as Font from 'expo-font';
 
 import Bible from './screens/Bible'
 import Home from './screens/Home'
-
+import Notes from './screens/Notes'
 const Tab = createBottomTabNavigator();
 
 
@@ -62,6 +62,14 @@ export default class App extends Component {
           <Tab.Screen 
           name="Bible" 
           component={Bible}
+          options={{
+            headerShown: false,
+            tabBarStyle: { display: "none" },
+          }} 
+          />
+          <Tab.Screen 
+          name="Notes" 
+          component={Notes}
           options={{
             headerShown: false,
             tabBarStyle: { display: "none" },

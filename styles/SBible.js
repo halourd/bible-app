@@ -12,6 +12,7 @@ const bible_style = StyleSheet.create({
         paddingHorizontal: 35,
         // borderWidth: 1,
         // borderColor: 'green',
+ 
     },
     SelectionButtons: {
         flex:1,
@@ -34,6 +35,10 @@ const bible_style = StyleSheet.create({
     },
     navBar: {
         zIndex: 1,
+    },
+
+    scrollView: {
+        marginBottom: '60%'
     },
 
     // Verse View

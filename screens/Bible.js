@@ -73,19 +73,21 @@ export default class Bible extends Component {
         </View>
 
         <ScrollView>
-          {Corinthians_1.map((item, index) => {
-            if (item.book == 46 && item.chapter == this.state.chapterSelected)
-              return (
-                <View style={style.VerseViewContainer}>
-                  <View style={style.verseNumber}>
-                    <Text>{item.verse}</Text>
-                  </View>
-                  <View style={style.verseText}>
-                    <Text>{item.text}</Text>
-                  </View>
-                </View>
-              );
-          })}
+            <View style={bible_style.scrollView}>
+                {Corinthians_1.map((item, index) => {
+                    if (item.book == 46 && item.chapter == this.state.chapterSelected)
+                    return (
+                        <View style={style.VerseViewContainer}>
+                        <View style={style.verseNumber}>
+                            <Text>{item.verse}</Text>
+                        </View>
+                        <View style={style.verseText}>
+                            <Text>{item.text}</Text>
+                        </View>
+                        </View>
+                    );
+                })}
+          </View>
         </ScrollView>
 
         {/* <FlatList

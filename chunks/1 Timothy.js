@@ -4,7 +4,7 @@ module.exports = [
     book: 54,
     chapter: 1,
     verse: 1,
-    text: "¶ Si Pablo, na apostol ni Cristo Jesus ayon sa utos ng Dios na ating Tagapagligtas, at ni Cristo Jesus na ating pagasa;",
+    text: "Si Pablo, na apostol ni Cristo Jesus ayon sa utos ng Dios na ating Tagapagligtas, at ni Cristo Jesus na ating pagasa;",
   },
   {
     book_name: "1 Timothy",

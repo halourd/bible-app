@@ -4,7 +4,7 @@ module.exports = [
     book: 46,
     chapter: 1,
     verse: 1,
-    text: "¶ Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid,",
+    text: "Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid,",
   },
   {
     book_name: "1 Corinthians",

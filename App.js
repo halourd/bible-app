@@ -3,12 +3,14 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { createStackNavigator } from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import * as Font from 'expo-font';
 
 import Bible from './screens/Bible'
 import Home from './screens/Home'
-const Stack = createStackNavigator();
+
+const Tab = createBottomTabNavigator();
 
 
 export default class App extends Component {
@@ -48,17 +50,42 @@ export default class App extends Component {
   return (
     <NavigationContainer>
         <StatusBar style="auto" />
-        <Stack.Navigator>
-          {/* <Stack.Screen 
-            name="Bible"
-            component={Bible}
-          />   */}
+        <Tab.Navigator>
+          <Tab.Screen 
+          name="Home" 
+          component={Home} 
+          options={{
+            headerShown: false,
+            tabBarStyle: { display: "none" },
+          }}
+          />
+          <Tab.Screen 
+          name="Bible" 
+          component={Bible}
+          options={{
+            headerShown: false,
+            tabBarStyle: { display: "none" },
+          }} 
+          />
+        </Tab.Navigator>
+
+
+
+
+
+        {/* <Stack.Navigator initialRouteName='Home'>
+
           <Stack.Screen 
             name="Home"
             component={Home}
             options={{headerShown: false}}
           />      
-        </Stack.Navigator>
+
+          <Stack.Screen 
+            name="Bible"
+            component={Bible}
+          />  
+        </Stack.Navigator> */}
     </NavigationContainer>
   );
 }

@@ -70,14 +70,20 @@ export default class Bible extends Component {
                 {Corinthians_1.map((item, index) => {
                     if (item.book == 46 && item.chapter == this.state.chapterSelected)
                     return (
+                      <TouchableOpacity 
+                      onPress={()=>{
+                        alert('Hello World!')
+                      }}
+                      >
                         <View style={bible_style.VerseViewContainer}>
-                        <View style={bible_style.verseNumber}>
-                            <Text style={[bible_style.verse_numberText, bible_style.use_fontFamily]}>{item.verse}</Text>
+                          <View style={bible_style.verseNumber}>
+                              <Text style={[bible_style.verse_numberText, bible_style.use_fontFamily]}>{item.verse}</Text>
+                          </View>
+                          <View style={bible_style.verseTextContainer}>
+                              <Text style={[bible_style.verse_text, bible_style.use_fontFamily]}>{item.text}</Text>
+                          </View>
                         </View>
-                        <View style={bible_style.verseTextContainer}>
-                            <Text style={[bible_style.verse_text, bible_style.use_fontFamily]}>{item.text}</Text>
-                        </View>
-                        </View>
+                        </TouchableOpacity>
                     );
                 })}
           </View>
@@ -133,7 +139,10 @@ export default class Bible extends Component {
           </View>
         </Modal>
 
-        <NavigationBar name="Home" />
+        <NavigationBar 
+          name="Home"
+          navigation={this.props.navigation}
+        />
       </View>
     );
   }

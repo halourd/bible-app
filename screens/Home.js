@@ -7,10 +7,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import NavigationBar from '../components/NavigationBar';
 // import { MenuProvider } from 'react-native-popup-menu';
 
-
 import home_style from '../styles/SHome'
 
 const style = home_style
+const Stack = createStackNavigator();
 
 export default class Home extends Component{
     render(){
@@ -47,6 +47,7 @@ export default class Home extends Component{
                 </View>
                 <NavigationBar 
                     name="Home"
+                    navigation={this.props.navigation}
                 />
                 </ImageBackground>
             </View>

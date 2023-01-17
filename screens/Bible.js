@@ -1,34 +1,140 @@
-import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import NavigationBar from '../components/NavigationBar';
+import "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  FlatList,
+  Modal,
+  TouchableHighlight,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import NavigationBar from "../components/NavigationBar";
 
-import bible_style from '../styles/SBible';
+import Corinthians_1 from "../chunks/1 Corinthians";
+import bible_style from "../styles/SBible";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+// import { FlatList } from 'react-native-gesture-handler';
 
-const style = bible_style
+
+const displayChapter = (book, chapterNum) => {
+  for (let chapters of book) {
+    if (chapters.chapter == chapterNum) {
+      return chapters.verse;
+    }
+  }
+};
+
+const countChapters = (book) => {
+    let chapters = [];
+    for (let chapter of book) {
+        if (!chapters.includes(chapter.chapter)) {
+        chapters.push(chapter.chapter);
+        }
+    }
+    return chapters;
+}
+
 
 export default class Bible extends Component {
-    render(){
-        return(
-            <View style={style.container}>
-                <View style={style.Selection}>
-                    <TouchableOpacity delayPressIn={0} style={style.SelectionButtons}>
-                        <Text>1 Corinthians</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={style.SelectionButtons}>
-                        <Text>Chapter 1</Text>
-                    </TouchableOpacity>
-                </View>
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      isModalVisible: false,
+      bookSelected: 46,
+      chapterSelected: 1,
+    };
+  }
+  render() {
+    return (
+      <View style={bible_style.container}>
+        <View style={bible_style.Selection}>
+          <TouchableOpacity delayPressIn={0} style={bible_style.SelectionButtons}>
+            <Text style={[bible_style.selectionButtonText, bible_style.use_fontFamily]}>1 Corinthians</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={bible_style.SelectionButtons}
+            onPress={() => this.setState({ isModalVisible: true })}
+          >
+            <Text  style={[bible_style.selectionButtonText, bible_style.use_fontFamily]}>Chapter {this.state.chapterSelected}</Text>
+          </TouchableOpacity>
+        </View>
 
-                    <NavigationBar 
-                        name="Home"
-                    />
+        <ScrollView>
+            <View style={bible_style.scrollView}>
+                {Corinthians_1.map((item, index) => {
+                    if (item.book == 46 && item.chapter == this.state.chapterSelected)
+                    return (
+                        <View style={bible_style.VerseViewContainer}>
+                        <View style={bible_style.verseNumber}>
+                            <Text style={[bible_style.verse_numberText, bible_style.use_fontFamily]}>{item.verse}</Text>
+                        </View>
+                        <View style={bible_style.verseTextContainer}>
+                            <Text style={[bible_style.verse_text, bible_style.use_fontFamily]}>{item.text}</Text>
+                        </View>
+                        </View>
+                    );
+                })}
+          </View>
+        </ScrollView>
 
+        {/* <FlatList
+          data={Corinthians_1}
+          renderItem={({ item }) => {
+            <View style={style.VerseViewContainer}>
+              <View style={style.verseNumber}>
+                <Text>{item.verse}</Text>
+              </View>
+              <View style={style.verseText}>
+                <Text>{item.text}</Text>
+              </View>
+            </View>;
+          }}
+          keyExtractor={(item) => item.verse}
+        /> */}
+
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.isModalVisible}
+          style={bible_style.modalContainer}
+          onRequestClose={() => {
+            this.setState({ isModalVisible: false });
+          }}
+        >
+          <View style={bible_style.modalView}>
+            <View style={bible_style.modalHeaderContainer}>
+              <Text style={[bible_style.modalHeaderText, bible_style.use_fontFamily]}>Select Chapter</Text>
             </View>
-        )
-    }
+            <ScrollView style={bible_style.chapterListContainer}>
+                {
+                    countChapters(Corinthians_1).map((item) => {
+                        return (
+                            <TouchableHighlight
+                                underlayColor={"#ccc"}
+                                style={bible_style.chapterList}
+                                onPress={() => {
+                                    this.setState({ chapterSelected: item, isModalVisible: false });
+                                }}
+                            >
+                                <View style={bible_style.chapterListButton}>
+                                    <Text style={[bible_style.use_fontFamily]}>Chapter {item}</Text>
+                                </View>
+                            </TouchableHighlight>
+                        );
+                    })
+                }
+            </ScrollView>
+          </View>
+        </Modal>
+
+        <NavigationBar name="Home" />
+      </View>
+    );
+  }
 }

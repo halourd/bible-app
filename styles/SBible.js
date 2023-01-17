@@ -7,8 +7,14 @@ const bible_style = StyleSheet.create({
         position: 'relative',
         flex: 1,
     },
+
+    use_fontFamily: {
+        fontFamily: 'ProductSans-Regular',
+    },
+
     Selection: {
         flexDirection: 'row',
+        paddingHorizontal: 35,
         // borderWidth: 1,
         // borderColor: 'green',
     },
@@ -31,9 +37,106 @@ const bible_style = StyleSheet.create({
         
         elevation: 3,     
     },
+
+    selectionButtonText:{
+        fontSize: 18,
+    },  
+
     navBar: {
         zIndex: 1,
+    },
+
+    scrollView: {
+        marginBottom: '60%'
+    },
+
+    // Verse View
+    VerseViewContainer: {
+        flexDirection: 'row',
+        // borderWidth: 1,
+        // borderColor: 'red',
+        // paddingVertical: 15,
+        // borderWidth: 1,
+        // borderColor: 'red',
+    },
+    
+    verseNumber: {
+        // borderWidth: 1,
+        paddingHorizontal: 20,
+        justifyContent: 'center',
+    },
+    
+    verseTextContainer : {
+        // borderWidth: 1,
+        paddingVertical: 15,
+        paddingRight: 15,
+        flexShrink: 1,
+        
+    
+    },
+
+    verse_numberText: {
+        fontSize: 16,
+    },
+
+
+    verse_text: {
+        fontSize: 16,
+    },
+
+
+    //Modal Container
+    modalContainer: {   
+
+    },  
+
+    modalView:  {
+        // borderWidth: 1,
+        // borderColor: 'red',
+        borderRadius: 10,
+        height: '70%',
+
+        padding: 20,
+        marginTop: 70,
+        marginHorizontal: 40,
+        backgroundColor: '#eeedde',
+
+        shadowColor: "#000",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        
+        elevation: 11, 
+        
+    },
+
+    modalHeaderText: {
+        fontSize: 21,
+        marginVertical: 10,
+        paddingHorizontal: 20,
+        textAlign: 'center',
+        fontFamily : 'ProductSans-Bold',
+    },
+
+    chapterListContainer: {
+        // borderWidth: 1,
+        // borderColor: 'red',
+    },
+
+    chapterList: {
+        padding: 20,
+        borderRadius: 10
+    },
+    
+
+    chapterListButton: {
     }
+    
+
 })
 
 export default bible_style;

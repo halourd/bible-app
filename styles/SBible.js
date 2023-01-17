@@ -63,6 +63,46 @@ const bible_style = StyleSheet.create({
 
     verse_text: {
         fontSize: 16,
+    },
+
+
+    //Modal Container
+    modalContainer: {   
+
+    },  
+
+    modalView:  {
+        // borderWidth: 1,
+        // borderColor: 'red',
+        borderRadius: 10,
+        height: '70%',
+
+        padding: 20,
+        marginTop: 70,
+        marginHorizontal: 40,
+        backgroundColor: '#eeedde',
+
+        shadowColor: "#000",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        
+        elevation: 11, 
+        
+    },
+
+
+    modalHeaderText: {
+        fontSize: 21,
+        fontWeight: 'bold'
+    },
+
+    chapterListButton: {
+        padding: 10,
     }
     
 

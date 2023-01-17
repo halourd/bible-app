@@ -24,7 +24,7 @@ export default class Home extends Component{
                     <Text style={style.title}>Biblecite</Text>
                 </View>
                 <View style={style.votdContainer}>
-                    <Text style={style.verse}>
+                    <Text style={[style.verse, style.use_fontFamilyRegular]}>
                         "But grow in grace, and in the
                         knowledge of our Lord and
                         Savior Jesus Christ. To him be 

@@ -55,8 +55,6 @@ const bible_style = StyleSheet.create({
     // Verse View
     VerseViewContainer: {
         flexDirection: 'row',
-        // borderWidth: 1,
-        // borderColor: 'red',
         // paddingVertical: 15,
         // borderWidth: 1,
         // borderColor: 'red',
@@ -102,7 +100,7 @@ const bible_style = StyleSheet.create({
         height: '70%',
 
         padding: 20,
-        marginTop: 70,
+        marginTop: '30%',
         marginHorizontal: 40,
         backgroundColor: '#eeedde',
 

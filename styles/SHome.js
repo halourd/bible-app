@@ -8,6 +8,13 @@ const home_style = StyleSheet.create ({
         zIndex: -1,
         flex: 1
     },
+    use_fontFamilyRegular: {
+        fontFamily: 'ProductSans-Regular'
+    },
+    use_fontFamilyBold: {
+        fontFamily: 'ProductSans-Bold'
+    },
+
     homeBg: {
         flex: 1
     },
@@ -34,7 +41,8 @@ const home_style = StyleSheet.create ({
     },
     verse: {
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: 'ProductSans-Bold'
     },
     verseTitle: {
         marginTop: 30,

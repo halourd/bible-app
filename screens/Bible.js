@@ -142,25 +142,20 @@ export default class Bible extends Component {
         {/* Search Button */}
 
         <TouchableHighlight
-          activeOpacity={0.6}
-          underlayColor={"#DDDDDD"}
-          style={bible_style.searchButtonContainer}
-          onPress={() => {
-            alert("This will redirect you to the search page.");
-          }}
+        activeOpacity={0.6}
+        underlayColor={"#DDDDDD"}
+        style={bible_style.searchButtonContainer}
+        onPress={() => {
+          alert('Hello World')
+        }}
         >
           <View style={bible_style.searchButton}>
-            <Image
-              style={bible_style.searchIcon}
-              source={require("../assets/pngs/search.png")}
-            />
-            <Text
-              style={[bible_style.searchButtonText, bible_style.use_fontFamily]}
-            >
-              Search Word
-            </Text>
+            <Image style={bible_style.searchIcon} source={require('../assets/pngs/search.png')}/>
+            <Text style={[bible_style.searchButtonText, bible_style.use_fontFamily]}>Search Word</Text>
           </View>
         </TouchableHighlight>
+
+        
 
         <Modal
           animationType="slide"

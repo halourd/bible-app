@@ -9,6 +9,7 @@ import {
   ScrollView,
   FlatList,
   Modal,
+  TouchableHighlight,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -31,15 +32,20 @@ const displayChapter = (book, chapterNum) => {
   }
 };
 
-// const countChapters = (book) => {
-//     let chapters = [];
-//     for (let chapter of book) {
-//         if (!chapters.includes(chapter.chapter)) {
-//         chapters.push(chapter.chapter);
-//         }
-//     }
-//     return chapters;
-// }
+const displayBooks = (book) => {
+    
+}
+
+const countChapters = (book) => {
+    let chapters = [];
+    for (let chapter of book) {
+        if (!chapters.includes(chapter.chapter)) {
+        chapters.push(chapter.chapter);
+        }
+    }
+    return chapters;
+}
+
 
 export default class Bible extends Component {
   constructor(props) {
@@ -97,30 +103,6 @@ export default class Bible extends Component {
           keyExtractor={(item) => item.verse}
         /> */}
 
-        {/* <ScrollView>
-                    <View style={style.VerseViewContainer}>
-                        <View style={style.verseNumber}>
-                            <Text>1</Text>
-                        </View>
-                        <View style={style.verseText}>
-                            <Text>
-                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={style.VerseViewContainer}>
-                        <View style={style.verseNumber}>
-                            <Text>1</Text>
-                        </View>
-                        <View style={style.verseText}>
-                            <Text>
-                                Si Pablo, na tinawag na maging apostol ni Jesucristo sa pamamagitan ng kalooban ng Dios, at si Sostenes na ating kapatid, 
-                            </Text>
-                        </View>
-                    </View>
-
-                </ScrollView> */}
-
         <Modal
           animationType="slide"
           transparent={true}
@@ -135,7 +117,23 @@ export default class Bible extends Component {
               <Text style={bible_style.modalHeaderText}>Select Chapter</Text>
             </View>
             <ScrollView style={bible_style.chapterListContainer}>
-
+                {
+                    countChapters(Corinthians_1).map((item) => {
+                        return (
+                            <TouchableHighlight
+                            underlayColor={"#ccc"}
+                                style={bible_style.chapterList}
+                                onPress={() => {
+                                    this.setState({ chapterSelected: item, isModalVisible: false });
+                                }}
+                            >
+                                <Text style={bible_style.chapterListButton}>
+                                    <Text>Chapter {item}</Text>
+                                </Text>
+                            </TouchableHighlight>
+                        );
+                    })
+                }
             </ScrollView>
           </View>
         </Modal>

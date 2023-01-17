@@ -95,14 +95,24 @@ const bible_style = StyleSheet.create({
         
     },
 
-
     modalHeaderText: {
         fontSize: 21,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginVertical: 10
     },
 
+    chapterListContainer: {
+        // borderWidth: 1,
+        // borderColor: 'red',
+    },
+
+    chapterList: {
+        padding: 20,
+        borderRadius: 10
+    },
+    
+
     chapterListButton: {
-        padding: 10,
     }
     
 

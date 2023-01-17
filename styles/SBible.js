@@ -7,12 +7,16 @@ const bible_style = StyleSheet.create({
         position: 'relative',
         flex: 1,
     },
+
+    use_fontFamily: {
+        fontFamily: 'ProductSans-Regular',
+    },
+
     Selection: {
         flexDirection: 'row',
         paddingHorizontal: 35,
         // borderWidth: 1,
         // borderColor: 'green',
- 
     },
     SelectionButtons: {
         flex:1,
@@ -33,6 +37,11 @@ const bible_style = StyleSheet.create({
         
         elevation: 3,     
     },
+
+    selectionButtonText:{
+        fontSize: 18,
+    },  
+
     navBar: {
         zIndex: 1,
     },
@@ -42,7 +51,6 @@ const bible_style = StyleSheet.create({
     },
 
     // Verse View
-
     VerseViewContainer: {
         flexDirection: 'row',
         // borderWidth: 1,
@@ -58,13 +66,19 @@ const bible_style = StyleSheet.create({
         justifyContent: 'center',
     },
     
-    verseText : {
+    verseTextContainer : {
         // borderWidth: 1,
         paddingVertical: 15,
         paddingRight: 15,
         flexShrink: 1,
+        
     
     },
+
+    verse_numberText: {
+        fontSize: 16,
+    },
+
 
     verse_text: {
         fontSize: 16,
@@ -102,8 +116,10 @@ const bible_style = StyleSheet.create({
 
     modalHeaderText: {
         fontSize: 21,
-        fontWeight: 'bold',
-        marginVertical: 10
+        marginVertical: 10,
+        paddingHorizontal: 20,
+        textAlign: 'center',
+        fontFamily : 'ProductSans-Bold',
     },
 
     chapterListContainer: {

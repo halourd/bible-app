@@ -139,6 +139,49 @@ const bible_style = StyleSheet.create({
     
 
     chapterListButton: {
+    },
+
+    searchButtonContainer: {
+        // borderWidth: 1,
+        // borderColor: 'red',
+        position: 'absolute',
+        bottom: 140,
+        right: 45,
+        backgroundColor: '#eeedde',
+
+        borderRadius: 10,
+
+        shadowColor: "#000",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        
+        elevation: 11, 
+    },
+
+    searchButton: {
+        flexDirection: 'row',
+        // borderWidth: 1,
+        // borderColor: 'red',
+        paddingHorizontal: 20,
+        paddingVertical: 13,
+        justifyContent: 'center',
+        
+    },
+
+    searchButtonText: {
+        fontSize: 16,
+        textAlignVertical: 'center',
+    },  
+
+    searchIcon: {
+        width: 30,
+        height: 30,
+        marginRight: 12,
     }
     
 

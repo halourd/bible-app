@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity,
   ScrollView,
   FlatList,
@@ -103,6 +104,24 @@ export default class Bible extends Component {
           }}
           keyExtractor={(item) => item.verse}
         /> */}
+
+        {/* Search Button */}
+
+        <TouchableHighlight
+        activeOpacity={0.6}
+        underlayColor={"#DDDDDD"}
+        style={bible_style.searchButtonContainer}
+        onPress={() => {
+          alert('Hello World')
+        }}
+        >
+          <View style={bible_style.searchButton}>
+            <Image style={bible_style.searchIcon} source={require('../assets/pngs/search.png')}/>
+            <Text style={[bible_style.searchButtonText, bible_style.use_fontFamily]}>Search Word</Text>
+          </View>
+        </TouchableHighlight>
+
+        
 
         <Modal
           animationType="slide"

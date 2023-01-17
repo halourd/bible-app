@@ -49,15 +49,15 @@ export default class App extends Component {
     <NavigationContainer>
         <StatusBar style="auto" />
         <Stack.Navigator>
-          <Stack.Screen 
+          {/* <Stack.Screen 
             name="Bible"
             component={Bible}
-          />  
-          {/* <Stack.Screen 
+          />   */}
+          <Stack.Screen 
             name="Home"
             component={Home}
             options={{headerShown: false}}
-          />       */}
+          />      
         </Stack.Navigator>
     </NavigationContainer>
   );

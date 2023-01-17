@@ -4,8 +4,12 @@ import {StyleSheet} from "react-native";
 
 const home_style = StyleSheet.create ({
     container: {
-        postion: 'relative',
-        zIndex: -1
+        position: 'relative',
+        zIndex: -1,
+        flex: 1
+    },
+    homeBg: {
+        flex: 1
     },
     homeNavbar: {
         marginTop: 50,
@@ -26,7 +30,6 @@ const home_style = StyleSheet.create ({
         justifyContent: 'center',
         padding: 30,
         marginTop: 10,
-        borderWidth: 1,
         margin: 25
     },
     verse: {
@@ -36,7 +39,17 @@ const home_style = StyleSheet.create ({
     verseTitle: {
         marginTop: 30,
         fontStyle: 'italic'
-    }
+    },
+    videosContainer: {
+        justifyContent: 'center',
+        padding: 20,
+        marginTop: 5,
+        margin: 25
+    },
+    vidHeader: {
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
 })
 
 export default home_style;

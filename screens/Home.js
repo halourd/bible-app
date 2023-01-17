@@ -5,27 +5,18 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground, Image
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import NavigationBar from '../components/NavigationBar';
+// import { MenuProvider } from 'react-native-popup-menu';
+
 
 import home_style from '../styles/SHome'
-
-// import Carousel from 'react-native-snap-carousel';
 
 const style = home_style
 
 export default class Home extends Component{
-
-    // _renderItem = ({item, index}) => {
-    //     return (
-    //         <View style={style.videosContainer}>
-    //                 <Text style={StyleSheet.content}>{item.title}</Text>
-    //         </View>
-    //     )
-    // }
-
     render(){
         return (
             <View style={style.container}>
-                {/* <ImageBackground source={require('../assets/bg/home_bg.png')} resizeMode="cover" style={style.homeBg}> */}
+                <ImageBackground source={require('../assets/bg/home_bg.png')} resizeMode="cover" style={style.homeBg}>
                 <View style={style.homeNavbar}>
                     <TouchableOpacity>
                         <Image style={style.menu} source={require('../assets/pngs/burger-menu.png')}/>
@@ -45,25 +36,20 @@ export default class Home extends Component{
                         King James version
                     </Text>
                 </View>
-                {/* <Carousel
-                ref={(c) => { this._carousel = c; }}
-                data={this.state.entries}
-                renderItem={this._renderItem}
-                sliderWidth={sliderWidth}
-                itemWidth={itemWidth}
-                /> */}
+                <View style={style.videosContainer}>
+                    <Text style={style.vidHeader}>Videos</Text>
+                </View>
                 <View style={style.Selection}>
                     <TouchableOpacity delayPressIn={0} style={style.SelectionButtons}>
                     </TouchableOpacity>
                     <TouchableOpacity style={style.SelectionButtons}>
-                    </TouchableOpacity> 
+                    </TouchableOpacity>  
                 </View>
-                {/* <NavigationBar 
+                <NavigationBar 
                     name="Home"
-                /> */}
-                {/* </ImageBackground> */}
+                />
+                </ImageBackground>
             </View>
         )
     }
 }
-

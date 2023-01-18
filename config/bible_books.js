@@ -63,7 +63,7 @@ const books = {
     '2Peter': require('../chunks/2Peter.js'),
     '1John': require('../chunks/1John.js'),
     '2John': require('../chunks/2John.js'),
-    '3 John': require('../chunks/3John.js'),
+    '3John': require('../chunks/3John.js'),
     Jude: require('../chunks/Jude.js'),
     Revelation: require('../chunks/Revelation.js')
 }

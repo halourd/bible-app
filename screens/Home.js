@@ -10,7 +10,6 @@ import NavigationBar from '../components/NavigationBar';
 import home_style from '../styles/SHome'
 
 const style = home_style
-const Stack = createStackNavigator();
 
 export default class Home extends Component{
     render(){

@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import {
   StyleSheet,
+  Animated,
   Text,
   View,
   Image,
@@ -13,6 +14,7 @@ import {
   TouchableHighlight,
   TouchableNativeFeedback,
 } from "react-native";
+import { useIsFocused } from "@react-navigation/native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import NavigationBar from "../components/NavigationBar";
@@ -23,14 +25,6 @@ import books from "../config/bible_books";
 import bible_style from "../styles/SBible";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 // import { FlatList } from 'react-native-gesture-handler';
-
-const displayChapter = (book, chapterNum) => {
-  for (let chapters of book) {
-    if (chapters.chapter == chapterNum) {
-      return chapters.verse;
-    }
-  }
-};
 
 const countChapters = (book) => {
   let chapters = [];
@@ -58,7 +52,7 @@ export default class Bible extends Component {
 
   render() {
     return (
-      <View style={bible_style.container}>
+      <Animated.View style={bible_style.container}>
         <View style={bible_style.Selection}>
           <TouchableOpacity
             delayPressIn={0}
@@ -153,7 +147,7 @@ export default class Bible extends Component {
           underlayColor={"#DDDDDD"}
           style={bible_style.searchButtonContainer}
           onPress={() => {
-            alert("This will redirect user to search page");
+            this.props.navigation.navigate('Search')
           }}
         >
           <View style={bible_style.searchButton}>
@@ -258,7 +252,7 @@ export default class Bible extends Component {
         </Modal>
 
         <NavigationBar name="Home" navigation={this.props.navigation} />
-      </View>
+      </Animated.View>
     );
   }
 }

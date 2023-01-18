@@ -1,3 +1,4 @@
+//STYLE FOR SEARCH SCREEN
 import { StyleSheet } from "react-native";
 
 const search_style = StyleSheet.create({

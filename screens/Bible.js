@@ -14,12 +14,11 @@ import {
   TouchableHighlight,
   TouchableNativeFeedback,
 } from "react-native";
-import { useIsFocused } from "@react-navigation/native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+// import { useIsFocused } from "@react-navigation/native";
+// import { NavigationContainer } from "@react-navigation/native";
+// import { createStackNavigator } from "@react-navigation/stack";
 import NavigationBar from "../components/NavigationBar";
 
-import Corinthians_1 from "../chunks/1 Corinthians";
 import books from "../config/bible_books";
 
 import bible_style from "../styles/SBible";

@@ -2,8 +2,6 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground, ImagePickerIOS } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import NavigationBar from '../components/NavigationBar';
 // import { MenuProvider } from 'react-native-popup-menu';
 

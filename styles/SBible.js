@@ -180,6 +180,12 @@ const bible_style = StyleSheet.create({
         width: 30,
         height: 30,
         marginRight: 12,
+    },
+
+
+    bookList: {
+        padding: 20,
+        borderRadius: 10
     }
     
 

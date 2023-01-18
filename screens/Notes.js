@@ -20,6 +20,9 @@ export default class App extends Component {
         <ScrollView>
         <TouchableOpacity 
         activeOpacity={0.6}
+        onPress={() => {
+          alert('Functionality not yet implemented.');
+        }}
         style={styles.headerNotes}>
           <View>
             <View style={styles.notesContainer}>
@@ -38,6 +41,9 @@ export default class App extends Component {
 
         <TouchableOpacity 
         activeOpacity={0.6}
+        onPress={() => {
+          alert('Functionality not yet implemented.');
+        }}
         style={styles.headerNotes}>
           <View>
             <View style={styles.notesContainer}>
@@ -56,6 +62,9 @@ export default class App extends Component {
 
         <TouchableOpacity
         activeOpacity={0.6}
+        onPress={() => {
+          alert('Functionality not yet implemented.');
+        }}
         style={styles.headerNotes}>
           <View>
             <View style={styles.notesContainer}>
@@ -74,6 +83,9 @@ export default class App extends Component {
 
         <TouchableOpacity
         activeOpacity={0.6}
+        onPress={() => {
+          alert('Functionality not yet implemented.');
+        }}
         style={styles.headerNotes}>
           <View>
             <View style={styles.notesContainer}>
@@ -92,6 +104,9 @@ export default class App extends Component {
 
         <TouchableOpacity
         activeOpacity={0.6}
+        onPress={() => {
+          alert('Functionality not yet implemented.');
+        }}
         style={styles.headerNotes}>
           <View>
             <View style={styles.notesContainer}>
@@ -110,6 +125,9 @@ export default class App extends Component {
 
         <TouchableOpacity
         activeOpacity={0.6}
+        onPress={() => {
+          alert('Functionality not yet implemented.');
+        }}
         style={styles.headerNotes}>
           <View>
             <View style={styles.notesContainer}>

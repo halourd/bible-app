@@ -17,7 +17,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import NavigationBar from "../components/NavigationBar";
 
-import Corinthians_1 from "../chunks/1Corinthians";
+import Corinthians_1 from "../chunks/1 Corinthians";
 import books from "../config/bible_books";
 
 import bible_style from "../styles/SBible";
@@ -71,6 +71,7 @@ export default class Bible extends Component {
                 bible_style.use_fontFamily,
               ]}
             >
+              {/* {console.log(books[this.state.bookSelectedText])} */}
               {this.state.bookSelectedText}
             </Text>
           </TouchableOpacity>
@@ -84,6 +85,7 @@ export default class Bible extends Component {
                 bible_style.use_fontFamily,
               ]}
             >
+              
               Chapter {this.state.chapterSelected}
             </Text>
           </TouchableOpacity>

@@ -148,13 +148,12 @@ export default class Bible extends Component {
         /> */}
 
         {/* Search Button */}
-
         <TouchableHighlight
           activeOpacity={0.6}
           underlayColor={"#DDDDDD"}
           style={bible_style.searchButtonContainer}
           onPress={() => {
-            alert("Hello World");
+            alert("This will redirect user to search page");
           }}
         >
           <View style={bible_style.searchButton}>

@@ -38,7 +38,7 @@ const home_style = StyleSheet.create ({
         justifyContent: 'center',
         padding: 30,
         marginTop: 5,
-        margin: 25
+        marginHorizontal: 20,
     },
     verse: {
         fontSize: 21,
@@ -47,23 +47,32 @@ const home_style = StyleSheet.create ({
     verseTitle: {
         marginTop: 30,
         fontSize: 16,
-
     },
     videosContainer: {
         justifyContent: 'center',
-        padding: 20,
-        marginHorizontal: 25
     },
     vidHeader: {
         fontSize: 22,
         fontFamily: 'ProductSans-Bold',
+        marginLeft: 40,
+        marginVertical: 10
     },
-
     videos:{
-        backgroundColor: '#f1f5f6',
-        padding: 5,
+        backgroundColor: 'white',
+        padding: 20,
         height: 150,
-        width: 300
+        width: 250,
+        marginHorizontal: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+        width: 0,
+        height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+
+        elevation: 5,
+        borderRadius: 10
     }
 
 })

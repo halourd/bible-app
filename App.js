@@ -9,7 +9,8 @@ import * as Font from 'expo-font';
 import Bible from './screens/Bible'
 import Home from './screens/Home'
 import Notes from './screens/Notes'
-import Search from './screens/Search';
+import Search from './screens/Search'
+import Sync from './screens/Sync';
 
 // import navigation from './config/navigation'
 const Tab = createBottomTabNavigator();
@@ -53,7 +54,7 @@ export default class App extends Component {
   return (
     <NavigationContainer>
         <StatusBar style="auto" />
-        <Tab.Navigator>
+        <Tab.Navigator initialRouteName='Sync'>
           <Tab.Screen 
           name="Home" 
           component={Home} 
@@ -85,7 +86,16 @@ export default class App extends Component {
             headerShown: false,
             tabBarStyle: { display: "none" },
           }} 
+          
           />
+          <Tab.Screen 
+          name="Sync" 
+          component={Sync}
+          options={{
+            headerShown: false,
+            tabBarStyle: { display: "none" },
+          }} /> 
+
         </Tab.Navigator>
 
 

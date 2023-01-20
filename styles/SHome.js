@@ -37,7 +37,7 @@ const home_style = StyleSheet.create ({
     votdContainer: {
         justifyContent: 'center',
         padding: 30,
-        marginTop: 40,
+        marginTop: 5,
         margin: 25
     },
     verse: {
@@ -52,13 +52,19 @@ const home_style = StyleSheet.create ({
     videosContainer: {
         justifyContent: 'center',
         padding: 20,
-        marginTop: 5,
         marginHorizontal: 25
     },
     vidHeader: {
         fontSize: 22,
         fontFamily: 'ProductSans-Bold',
     },
+
+    videos:{
+        backgroundColor: '#f1f5f6',
+        padding: 5,
+        height: 150,
+        width: 300
+    }
 
 })
 

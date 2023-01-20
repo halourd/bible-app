@@ -69,7 +69,7 @@ export default class Home extends Component{
                     <Text style={style.vidHeader}>Videos</Text>
                     <FlatList 
                     data={DATA}
-                    renderItem={({item}) => <Item title={item.title} />}
+                    renderItem={({item}) => <Item title={item.title} /> }
                     horizontal 
                     contentContainerStyle={{padding: 5}}
                     contentInsetAdjustmentBehavior='never'

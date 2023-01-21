@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NavigationBar from '../components/NavigationBar';
 
@@ -15,6 +15,15 @@ export default class App extends Component {
           <View style={styles.titleContainer}>
             <Text style={styles.titleName}>NOTES</Text>
           </View>
+          <TouchableOpacity
+            style={styles.optionContainer}
+            onPress={() => {
+              this.props.navigation.navigate('Sync')
+            }}
+          >
+            <Image source={require('../assets/pngs/cloud_sync.png')} style={styles.optionImage} />
+            <Text style={styles.optionTitle}>Sync Notes</Text>
+          </TouchableOpacity>
         </View>
 
         <ScrollView>

@@ -71,7 +71,8 @@ const sync_style = StyleSheet.create({
 
     syncLabel: {
         fontSize:19,
-        marginVertical: 10
+        marginVertical: 10,
+        fontFamily: 'ProductSans-Regular'
     },
 
     syncButton: {

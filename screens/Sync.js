@@ -19,7 +19,7 @@ export default class Sync extends Component {
           
           <TouchableOpacity
             onPress={() => { 
-              this.props.navigation.goBack('Notes')
+              this.props.navigation.navigate('Notes')
             }}
           >
           <View style={sync_style.backButtonContainer}>

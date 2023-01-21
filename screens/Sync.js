@@ -1,5 +1,4 @@
 import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -9,15 +8,29 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import NavigationBar from "../components/NavigationBar";
 import sync_style from "../styles/SSync";
 
 export default class Sync extends Component {
   render() {
     return (
-      <View>
+      <View style={sync_style.mainContainer}>
+        {/* Header Title */}
+        <View style={sync_style.headerContainer}>
+          
+          <TouchableOpacity
+            onPress={() => { 
+              this.props.navigation.goBack('Notes')
+            }}
+          >
+          <View style={sync_style.backButtonContainer}>
+            <Image source={require('../assets/pngs/arrow_left.png')} style={sync_style.backButtonImage} />
+            </View>
+            </TouchableOpacity>
+
+          <View style={sync_style.titleContainer}>
+            <Text style={sync_style.titleName}>Sync</Text>
+          </View>
+        </View>
         {/* Sync from other device */}
         <View style={sync_style.container1}>
           <View style={sync_style.subContainer1}>
@@ -73,7 +86,7 @@ export default class Sync extends Component {
             </View>
           </View>
         </View>
-        <NavigationBar name="Home" navigation={this.props.navigation} />
+        {/* <NavigationBar name="Home" navigation={this.props.navigation} /> */}
         
       </View>
     );

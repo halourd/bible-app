@@ -2,6 +2,43 @@
 import { StyleSheet } from "react-native";
 
 const sync_style = StyleSheet.create({
+    mainContainer: {
+        // borderWidth: 1,
+        flex: 1
+    },
+
+    headerContainer: {
+        marginTop: 50,
+        paddingVertical: 20,
+        // borderWidth: 1,
+
+        flexDirection: 'row'
+    },
+
+    backButtonContainer: {
+        justifyContent: 'center',
+        // borderWidth: 1,
+        paddingHorizontal: 20
+    },
+
+    backButtonImage: {
+        width: 30,
+        height: 30
+    },  
+
+    syncHeader: {
+        
+    },
+
+    titleName: {  
+        fontSize: 24,
+        fontFamily: "ProductSans-Bold",
+    },
+
+    titleContainer: {
+        // paddingHorizontal: 30,
+    },
+
     container1: {
         flexDirection: 'row',
         marginHorizontal: 20,

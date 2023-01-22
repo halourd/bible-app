@@ -14,30 +14,33 @@ import home_style from '../styles/SHome'
 const style = home_style
 const Stack = createStackNavigator();
 
-const DATA = [
+const data = [
     {
-        id: '1',
-        title: 'Community Prayer',
-        image: require('../assets/vids/community_prayer.png')
+        'id': '1',
+        'title': 'MCGI Bible Study',
+        'image': require('../assets/vids/biblestudy.png')
     },
     {
-        id: '2',
-        title: 'Mass Indoctrination',
-        image: require('../assets/vids/mass_indoc.png')
+        'id': '2',
+        'title': 'MCGI Mass Indoctrination',
+        'image': require('../assets/vids/massindoc.png')
     },
     {
-        id: '3',
-        title: 'Songs of Faith',
-        image: require('../assets/vids/songs_of_faith.png')
-        
+        'id': '3',
+        'title': 'MCGI Cares',
+        'image': require('../assets/vids/mcgicares.png')
     },
 ];
 
-const Item = ({title, image}) => [
-    <View style={style.videos}>
-        <Image source={{uri: image}}/>
-        <Text>{title}</Text>
-    </View>
+const Item = ({title, image, id}) => [
+    <TouchableOpacity activeOpacity={0.7}>
+        <View style={style.videos}>
+            <View>
+                <Image source={image} style={style.thumbnail}/>
+            </View>
+            <Text style={{fontFamily: 'ProductSans-Bold', marginBottom: 10}}>{title}</Text>
+        </View>
+    </TouchableOpacity>
 ];
 
 
@@ -68,8 +71,8 @@ export default class Home extends Component{
                 <View style={style.videosContainer}>
                     <Text style={style.vidHeader}>Videos</Text>
                     <FlatList 
-                    data={DATA}
-                    renderItem={({item}) => <Item title={item.title} /> }
+                    data={data}
+                    renderItem={({item}) => <Item title={item.title} image={item.image}/>}
                     horizontal 
                     contentContainerStyle={{padding: 5}}
                     contentInsetAdjustmentBehavior='never'

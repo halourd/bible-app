@@ -58,6 +58,8 @@ const home_style = StyleSheet.create ({
         marginVertical: 10
     },
     videos:{
+        justifyContent: 'center',
+        alignSelf: 'center',
         backgroundColor: 'white',
         padding: 20,
         height: 150,
@@ -70,9 +72,16 @@ const home_style = StyleSheet.create ({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-
         elevation: 5,
         borderRadius: 10
+    },
+    thumbnail: {
+        justifyContent:'center',
+        alignSelf: 'center',
+        height: 100,
+        width: 230,
+        borderRadius: 10,
+        marginBottom: 5
     }
 
 })

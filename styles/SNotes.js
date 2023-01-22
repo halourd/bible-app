@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
 
   use_fontFamily: {
@@ -13,14 +13,33 @@ const styles = StyleSheet.create({
   headerContainer: {
     marginTop: 50,
     paddingVertical:20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 30,
   },
+
+  optionImage: {
+    width: 30,
+    height: 30,
+    marginHorizontal: 10
+  },
+
+  optionTitle: {
+    fontFamily: 'ProductSans-Regular'
+  },
+
+  optionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+
   titleName: {  
     fontSize: 24,
     fontFamily: "ProductSans-Bold",
   },
 
   titleContainer: {
-    paddingHorizontal: 30,
   },
 
   notes: {

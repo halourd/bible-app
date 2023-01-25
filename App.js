@@ -54,7 +54,7 @@ export default class App extends Component {
   return (
     <NavigationContainer>
         <StatusBar style="auto" />
-        <Tab.Navigator initialRouteName='Sync'>
+        <Tab.Navigator initialRouteName='Home'>
           <Tab.Screen 
           name="Home" 
           component={Home} 

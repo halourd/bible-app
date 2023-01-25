@@ -23,6 +23,13 @@ const home_style = StyleSheet.create ({
         paddingVertical:20,
         flexDirection: "row",
     },
+    menupro:{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 50,
+        backgroundColor: '#ecf0f1',
+    },
     menu: {
         width: 25,
         height: 30,
@@ -33,6 +40,7 @@ const home_style = StyleSheet.create ({
     title: {
         fontSize: 24,
         fontFamily: 'ProductSans-Bold',
+        marginRight: 230
     },
     votdContainer: {
         justifyContent: 'center',

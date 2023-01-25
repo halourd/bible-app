@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import NavigationBar from '../components/NavigationBar';
 import { Dimensions } from 'react-native';
+import { MenuContext, Menu, MenuOptions, MenuOption, MenuTrigger, MenuProvider, renderers, rendererProps } from 'react-native-popup-menu';
 
 
 
@@ -43,16 +44,24 @@ const Item = ({title, image, id}) => [
     </TouchableOpacity>
 ];
 
-
 export default class Home extends Component{
     render(){
         return (
             <View style={style.container}>
                 <ImageBackground source={require('../assets/bg/home_bg.png')} resizeMode="cover" style={style.homeBg}>
                 <View style={style.homeNavbar}>
-                        <TouchableOpacity>
-                            <Image style={style.menu} source={require('../assets/pngs/burger-menu.png')}/>
-                        </TouchableOpacity>
+                        <MenuProvider>
+                            <View>
+                            <Menu>
+                                <MenuTrigger>
+                                    <Image source={require('../assets/pngs/burger-menu.png')} style={style.menu}/>
+                                </MenuTrigger>
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Functionality not yet implemented.`)} text="Function"/>
+                                </MenuOptions>
+                            </Menu>
+                            </View>
+                        </MenuProvider>
                     <Text style={style.title}>Biblecite</Text>
                 </View>
                 <View style={style.votdContainer}>

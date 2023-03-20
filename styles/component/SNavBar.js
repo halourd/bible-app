@@ -6,8 +6,7 @@ const SNavBar = StyleSheet.create({
         flex: 0,
         flexDirection: 'row',
         // marginHorizontal: 30,
-        borderRadius: 10,
-        paddingHorizontal: 30,
+        // paddingHorizontal: 20,
         position: 'absolute',
         shadowColor: "#203239",
         shadowOffset: {
@@ -17,25 +16,29 @@ const SNavBar = StyleSheet.create({
         shadowOpacity:  0.24,
         shadowRadius: 13.84,
         elevation: 17,
-        width: '80%',
-        bottom: 40,
+        width: '100%',
+        bottom: 0,
         alignSelf: 'center',
     },
     buttonContainer: {
-       padding: 17,
+       paddingHorizontal: 16,
+       paddingVertical: 12,
        width: '33.3%',
        alignItems: 'center',
        borderRadius: 10,
+    //    borderColor: 'red',
+    //    borderWidth: 1,
 
 
     },
     iconSvg: {
-        width: 34,
-        height: 34,
+        width: 28,
+        height: 28,
         marginBottom: 2,
     },
     label: {
         color: "#eeedde",
+        fontSize: 12,
     },
 
     use_fontFamily: {

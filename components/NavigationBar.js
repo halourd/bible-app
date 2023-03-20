@@ -29,7 +29,7 @@ export default class NavigationBar extends Component {
                  }}
                 useForeground={true}>
                     <View style={SNavBar.buttonContainer}>
-                        <Image style={SNavBar.iconSvg} source={require('../assets/pngs/open-book.png')}/>
+                        <Image style={[SNavBar.iconSvg, {width: 29, height: 29}]} source={require('../assets/pngs/open-book.png')}/>
                         <Text style={[SNavBar.label, SNavBar.use_fontFamily]}>Bible</Text>
                     </View>
                 </TouchableNativeFeedback>

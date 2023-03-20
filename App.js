@@ -33,13 +33,10 @@ export default class App extends Component {
       'ProductSans-Regular': require('./assets/fonts/ProductSans-Regular.ttf'),
     });
     
-    console.log('Triggered.')
     this.setState({ fontsLoaded: true });
   }
 
   componentDidMount() {
-    console.log('Fonts Not loaded');
-
     this.loadFonts().then(() => {
       console.log('Fonts loaded');
     });
@@ -97,9 +94,6 @@ export default class App extends Component {
           }} /> 
 
         </Tab.Navigator>
-
-
-
 
 
         {/* <Stack.Navigator initialRouteName='Home'>

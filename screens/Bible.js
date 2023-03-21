@@ -18,6 +18,7 @@ import {
 // import { NavigationContainer } from "@react-navigation/native";
 // import { createStackNavigator } from "@react-navigation/stack";
 import NavigationBar from "../components/NavigationBar";
+import Swiper from '../node_modules/react-native-swiper'
 
 import books from "../config/bible_books";
 
@@ -83,47 +84,93 @@ export default class Bible extends Component {
             </Text>
           </TouchableOpacity>
         </View>
+        
+        <Swiper style={{backgroundColor: 'yellow'}}>
+          
+          <ScrollView>
+            <View style={bible_style.scrollView}>
+              {books[this.state.bookSelectedText].map((item, index) => {
+                if (
+                  item.book_name == this.state.bookSelectedText &&
+                  item.chapter == this.state.chapterSelected
+                )
+                  return (
+                    <TouchableNativeFeedback
+                      onPress={() => {
+                        this.setState({ verseItemSelected: true });
+                      }}
+                    >
+                      <View style={bible_style.VerseViewContainer}>
+                        <View style={bible_style.verseNumber}>
+                          <Text
+                            style={[
+                              bible_style.verse_numberText,
+                              bible_style.use_fontFamily,
+                            ]}
+                          >
+                            {item.verse}
+                          </Text>
+                        </View>
+                        <View style={bible_style.verseTextContainer}>
+                          <Text
+                            style={[
+                              bible_style.verse_text,
+                              bible_style.use_fontFamily,
+                            ]}
+                          >
+                            {item.text}
+                          </Text>
+                        </View>
+                      </View>
+                    </TouchableNativeFeedback>
+                  );
+              })}
+            </View>
+          </ScrollView>
 
-        <ScrollView>
-          <View style={bible_style.scrollView}>
-            {books[this.state.bookSelectedText].map((item, index) => {
-              if (
-                item.book_name == this.state.bookSelectedText &&
-                item.chapter == this.state.chapterSelected
-              )
-                return (
-                  <TouchableNativeFeedback
-                    onPress={() => {
-                      this.setState({ verseItemSelected: true });
-                    }}
-                  >
-                    <View style={bible_style.VerseViewContainer}>
-                      <View style={bible_style.verseNumber}>
-                        <Text
-                          style={[
-                            bible_style.verse_numberText,
-                            bible_style.use_fontFamily,
-                          ]}
-                        >
-                          {item.verse}
-                        </Text>
+          <ScrollView>
+            <View style={bible_style.scrollView}>
+              {books[this.state.bookSelectedText].map((item, index) => {
+                if (
+                  item.book_name == this.state.bookSelectedText &&
+                  item.chapter == this.state.chapterSelected
+                )
+                  return (
+                    <TouchableNativeFeedback
+                      onPress={() => {
+                        this.setState({ verseItemSelected: true });
+                      }}
+                    >
+                      <View style={bible_style.VerseViewContainer}>
+                        <View style={bible_style.verseNumber}>
+                          <Text
+                            style={[
+                              bible_style.verse_numberText,
+                              bible_style.use_fontFamily,
+                            ]}
+                          >
+                            {item.verse}
+                          </Text>
+                        </View>
+                        <View style={bible_style.verseTextContainer}>
+                          <Text
+                            style={[
+                              bible_style.verse_text,
+                              bible_style.use_fontFamily,
+                            ]}
+                          >
+                            {item.text}
+                          </Text>
+                        </View>
                       </View>
-                      <View style={bible_style.verseTextContainer}>
-                        <Text
-                          style={[
-                            bible_style.verse_text,
-                            bible_style.use_fontFamily,
-                          ]}
-                        >
-                          {item.text}
-                        </Text>
-                      </View>
-                    </View>
-                  </TouchableNativeFeedback>
-                );
-            })}
-          </View>
-        </ScrollView>
+                    </TouchableNativeFeedback>
+                  );
+              })}
+            </View>
+          </ScrollView>
+          
+          
+        </Swiper>
 
         {/* <FlatList
           data={Corinthians_1}

@@ -18,7 +18,8 @@
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-gesture-handler": "^2.8.0",
-    "react-native-navigation": "^7.31.0"
+    "react-native-navigation": "^7.31.0",
+    "react-native-swiper": "^1.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

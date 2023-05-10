@@ -13,21 +13,23 @@ const bible_style = StyleSheet.create({
     },
 
     Selection: {
+        zIndex: 1,
+        position: 'absolute',
+        top: 40,
+        paddingHorizontal: 60,
         flexDirection: 'row',
-        paddingHorizontal: 35,
-        marginTop: 40,
-        paddingVertical: 5
-        // borderWidth: 1,
-        // borderColor: 'green',
+        justifyContent: 'space-between',
+        backgroundColor: 'rgba(0, 0, 0, 0)',
     },
     SelectionButtons: {
         flex:1,
         alignItems: 'center',
-        backgroundColor: '#d9d9d9',
-        padding: 18,
+        backgroundColor: 'white',
+        // bottom: 20,
+        padding: 12,
         marginVertical: 8,
-        marginHorizontal: 6,
-        borderRadius: 10,
+        marginHorizontal: 3,
+        borderRadius: 50,
         shadowColor: "#000",
         shadowColor: "#000",
         shadowOffset: {
@@ -41,7 +43,7 @@ const bible_style = StyleSheet.create({
     },
 
     selectionButtonText:{
-        fontSize: 18,
+        fontSize: 14,
     },  
 
     navBar: {
@@ -49,6 +51,7 @@ const bible_style = StyleSheet.create({
     },
 
     scrollView: {
+        marginTop: 90,
         marginBottom: '60%'
     },
 

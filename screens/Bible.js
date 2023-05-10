@@ -21,6 +21,7 @@ import NavigationBar from "../components/NavigationBar";
 import Swiper from '../node_modules/react-native-swiper'
 
 import books from "../config/bible_books";
+import ChapterSlide from "../components/bible/ChapterSlide";
 
 import bible_style from "../styles/SBible";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
@@ -44,8 +45,9 @@ export default class Bible extends Component {
       isModalVisible: false,
       isBookModalVisible: false,
       bookSelected: 1,
-      bookSelectedText: "Matthew",
+      bookSelectedText: "Genesis",
       chapterSelected: 1,
+      current_index: 0,
       verseItemSelected: false,
     };
   }
@@ -85,110 +87,33 @@ export default class Bible extends Component {
           </TouchableOpacity>
         </View>
         
-        <Swiper style={{backgroundColor: 'yellow'}}>
-          
-          <ScrollView>
-            <View style={bible_style.scrollView}>
-              {books[this.state.bookSelectedText].map((item, index) => {
-                if (
-                  item.book_name == this.state.bookSelectedText &&
-                  item.chapter == this.state.chapterSelected
-                )
-                  return (
-                    <TouchableNativeFeedback
-                      onPress={() => {
-                        this.setState({ verseItemSelected: true });
-                      }}
-                    >
-                      <View style={bible_style.VerseViewContainer}>
-                        <View style={bible_style.verseNumber}>
-                          <Text
-                            style={[
-                              bible_style.verse_numberText,
-                              bible_style.use_fontFamily,
-                            ]}
-                          >
-                            {item.verse}
-                          </Text>
-                        </View>
-                        <View style={bible_style.verseTextContainer}>
-                          <Text
-                            style={[
-                              bible_style.verse_text,
-                              bible_style.use_fontFamily,
-                            ]}
-                          >
-                            {item.text}
-                          </Text>
-                        </View>
-                      </View>
-                    </TouchableNativeFeedback>
-                  );
-              })}
-            </View>
-          </ScrollView>
-
-          <ScrollView>
-            <View style={bible_style.scrollView}>
-              {books[this.state.bookSelectedText].map((item, index) => {
-                if (
-                  item.book_name == this.state.bookSelectedText &&
-                  item.chapter == this.state.chapterSelected
-                )
-                  return (
-                    <TouchableNativeFeedback
-                      onPress={() => {
-                        this.setState({ verseItemSelected: true });
-                      }}
-                    >
-                      <View style={bible_style.VerseViewContainer}>
-                        <View style={bible_style.verseNumber}>
-                          <Text
-                            style={[
-                              bible_style.verse_numberText,
-                              bible_style.use_fontFamily,
-                            ]}
-                          >
-                            {item.verse}
-                          </Text>
-                        </View>
-                        <View style={bible_style.verseTextContainer}>
-                          <Text
-                            style={[
-                              bible_style.verse_text,
-                              bible_style.use_fontFamily,
-                            ]}
-                          >
-                            {item.text}
-                          </Text>
-                        </View>
-                      </View>
-                    </TouchableNativeFeedback>
-                  );
-              })}
-            </View>
-          </ScrollView>
-          
-          
+        <Swiper 
+        style={{backgroundColor: '#eee'}}
+        loop={false}
+        index={0}
+        loadMinimal={true}
+        loadMinimalSize={1}
+        showsPagination={false}
+        >
+          {
+            countChapters(books[this.state.bookSelectedText]).map((item, index) => {
+              console.log(item)
+              return (
+                  <View>
+                    <ChapterSlide 
+                    key={`${index}_${item}`}
+                    book_selected={this.state.bookSelectedText}
+                    chapter_selected={item}
+                    />
+                  </View>
+              )
+            })
+          }
         </Swiper>
 
-        {/* <FlatList
-          data={Corinthians_1}
-          renderItem={({ item }) => {
-            <View style={style.VerseViewContainer}>
-              <View style={style.verseNumber}>
-                <Text>{item.verse}</Text>
-              </View>
-              <View style={style.verseText}>
-                <Text>{item.text}</Text>
-              </View>
-            </View>;
-          }}
-          keyExtractor={(item) => item.verse}
-        /> */}
 
         {/* Search Button */}
-        <TouchableHighlight
+        {/* <TouchableHighlight
           activeOpacity={0.6}
           underlayColor={"#DDDDDD"}
           style={bible_style.searchButtonContainer}
@@ -207,7 +132,7 @@ export default class Bible extends Component {
               Search Word
             </Text>
           </View>
-        </TouchableHighlight>
+        </TouchableHighlight> */}
 
         <Modal
           animationType="slide"
@@ -238,6 +163,7 @@ export default class Bible extends Component {
                     onPress={() => {
                       this.setState({
                         bookSelectedText: book,
+                        current_chapter: 0,
                         isBookModalVisible: false,
                       });
                       
@@ -252,7 +178,7 @@ export default class Bible extends Component {
           </View>
         </Modal>
 
-        <Modal
+        {/* <Modal
           animationType="slide"
           visible={this.state.isModalVisible}
           style={bible_style.modalContainer}
@@ -295,7 +221,7 @@ export default class Bible extends Component {
               })}
             </ScrollView>
           </View>
-        </Modal>
+        </Modal> */}
 
         <NavigationBar name="Home" navigation={this.props.navigation} />
       </Animated.View>

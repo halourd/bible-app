@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { View, Text, TouchableOpacity, TouchableHighlight, ScrollView, Modal } from "react-native";
+import { View, Text, TouchableOpacity, TouchableHighlight, Image, ScrollView, Modal } from "react-native";
 
 import bible_style from "../../styles/SBible";
 
@@ -26,7 +26,7 @@ export default class ChapterSlide extends Component {
           activeOpacity={0.8}
           delayPressIn={0}
           style={bible_style.SelectionButtons}
-          onPress={() => this.setState({ isBookModalVisible: true })}
+          onPress={this.props.on_press}
         >
           <Text
             style={[
@@ -52,52 +52,48 @@ export default class ChapterSlide extends Component {
             Chapter {this.props.chapter_selected}
           </Text>
         </TouchableOpacity>
-
-
-        <Modal
-          animationType="slide"
-          visible={this.state.isBookModalVisible}
-          style={bible_style.modalContainer}
-          statusBarTranslucent={true}
-          onRequestClose={() => {
-            this.setState({ isBookModalVisible: false });
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={[bible_style.SelectionButtons, {
+            paddingHorizontal: 0,
+            paddingVertical: 12,
+            backgroundColor: "#E0DDAA",
+          }]}
+          onPress={() => {
+            this.props.navigation.navigate('Search')
           }}
         >
-          <View style={bible_style.modalView}>
-            <View style={bible_style.modalHeaderContainer}>
-              <Text
-                style={[
-                  bible_style.modalHeaderText,
-                  bible_style.use_fontFamily,
-                ]}
-              >
-                Select Book
-              </Text>
-            </View>
-            <ScrollView style={bible_style.bookListContainer}>
-              {
-              Object.keys(books).map((book) => {
-                return (
-                  <TouchableHighlight
-                    underlayColor={"#ccc"}
-                    style={bible_style.bookList}
-                    onPress={() => {
-                      this.setState({
-                        bookSelectedText: book,
-                        current_chapter: 0,
-                        isBookModalVisible: false,
-                      });
-                      console.log(this.state.bookSelectedText)
-                    }}>
-                    <View style={bible_style.bookListButton}>
-                      <Text style={[bible_style.use_fontFamily]}>{book}</Text>
-                    </View>
-                  </TouchableHighlight>
-                );
-              })}
-            </ScrollView>
+        <Image
+              style={bible_style.searchIcon}
+              source={require("../../assets/pngs/search.png")}
+            />
+        </TouchableOpacity>
+
+
+
+        {/* <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor={"#DDDDDD"}
+          style={bible_style.searchButtonContainer}
+          onPress={() => {
+            this.props.navigation.navigate('Search')
+          }}
+        >
+          <View style={bible_style.searchButton}>
+            <Image
+              style={bible_style.searchIcon}
+              source={require("../../assets/pngs/search.png")}
+            />
+            <Text
+              style={[bible_style.searchButtonText, bible_style.use_fontFamily]}
+            >
+              Search Word
+            </Text>
           </View>
-        </Modal>
+        </TouchableHighlight> */}
+
+
+
       </View>
 
       

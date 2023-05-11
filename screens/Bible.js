@@ -38,6 +38,8 @@ const countChapters = (book) => {
   return chapters;
 };
 
+
+
 export default class Bible extends Component {
   constructor(props) {
     super(props);
@@ -48,18 +50,30 @@ export default class Bible extends Component {
       bookSelected: 1,
       bookSelectedText: "Genesis",
       chapterSelected: 1,
-      current_index: 0,
+      current_chapter: 0,
       verseItemSelected: false,
     };
   }
 
   render() {
+    const onUserSwipe = (index) => {
+      const newChapter = index + 1;
+      this.setState({ chapterSelected: newChapter });
+    }
+  
+
     return (
       <Animated.View style={bible_style.container}>
+
         <PageIndicator
         book_selected_text={this.state.bookSelectedText}
         chapter_selected={this.state.chapterSelected}
+        navigation={this.props.navigation}
+        on_press={() => {
+          this.setState({ isBookModalVisible: true });
+        }}
         />
+
         <Swiper 
         style={{backgroundColor: '#eee'}}
         loop={false}
@@ -67,10 +81,10 @@ export default class Bible extends Component {
         loadMinimal={true}
         loadMinimalSize={1}
         showsPagination={false}
+        onIndexChanged={(index)=>onUserSwipe(index)}
         >
           {
             countChapters(books[this.state.bookSelectedText]).map((item, index) => {
-              console.log(item)
               return (
                   <View>
                     <ChapterSlide 
@@ -107,14 +121,13 @@ export default class Bible extends Component {
           </View>
         </TouchableHighlight> */}
 
-
-        {/* <Modal
+        <Modal
           animationType="slide"
-          visible={this.state.isModalVisible}
+          visible={this.state.isBookModalVisible}
           style={bible_style.modalContainer}
           statusBarTranslucent={true}
           onRequestClose={() => {
-            this.setState({ isModalVisible: false });
+            this.setState({ isBookModalVisible: false });
           }}
         >
           <View style={bible_style.modalView}>
@@ -125,34 +138,34 @@ export default class Bible extends Component {
                   bible_style.use_fontFamily,
                 ]}
               >
-                Select Chapter
+                Select Book
               </Text>
             </View>
-            <ScrollView style={bible_style.chapterListContainer}>
-              {countChapters(books[this.state.bookSelectedText]).map((item) => {
+            <ScrollView style={bible_style.bookListContainer}>
+              {
+              Object.keys(books).map((book) => {
                 return (
                   <TouchableHighlight
                     underlayColor={"#ccc"}
-                    style={bible_style.chapterList}
+                    style={bible_style.bookList}
                     onPress={() => {
                       this.setState({
-                        chapterSelected: item,
-                        isModalVisible: false,
+                        bookSelectedText: book,
+                        current_chapter: 0,
+                        isBookModalVisible: false,
                       });
-                    }}
-                  >
-                    <View style={bible_style.chapterListButton}>
-                      <Text style={[bible_style.use_fontFamily]}>
-                        Chapter {item}
-                      </Text>
+                      
+                      console.log(this.state.bookSelectedText)
+                    }}>
+                    <View style={bible_style.bookListButton}>
+                      <Text style={[bible_style.use_fontFamily]}>{book}</Text>
                     </View>
                   </TouchableHighlight>
                 );
               })}
             </ScrollView>
           </View>
-        </Modal> */}
-
+        </Modal>
         <NavigationBar name="Home" navigation={this.props.navigation} />
       </Animated.View>
     );

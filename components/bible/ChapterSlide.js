@@ -8,6 +8,7 @@ export default class ChapterSlide extends Component {
     render(){
         return (
             <ScrollView
+            ref={(ref) => { this.scrollView = ref; }}
             showsVerticalScrollIndicator={false}
             alwaysBounceVertical={true}
             fadingEdgeLength={300}

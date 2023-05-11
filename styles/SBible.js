@@ -13,20 +13,23 @@ const bible_style = StyleSheet.create({
     },
 
     Selection: {
+        borderWidth: 0,
         zIndex: 1,
         position: 'absolute',
         top: 40,
-        paddingHorizontal: 60,
+        paddingHorizontal: 42,
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: 'rgba(0, 0, 0, 0)',
+        // backgroundColor: 'rgba(0, 0, 0, 0)',
     },
     SelectionButtons: {
         flex:1,
         alignItems: 'center',
         backgroundColor: 'white',
         // bottom: 20,
-        padding: 12,
+        paddingHorizontal: 3,
+        paddingVertical: 12,
         marginVertical: 8,
         marginHorizontal: 3,
         borderRadius: 50,
@@ -180,9 +183,9 @@ const bible_style = StyleSheet.create({
     },  
 
     searchIcon: {
-        width: 30,
-        height: 30,
-        marginRight: 12,
+        width: 18,
+        height: 18,
+        // marginRight: 12,
     },
 
 

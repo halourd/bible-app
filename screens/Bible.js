@@ -22,6 +22,7 @@ import Swiper from '../node_modules/react-native-swiper'
 
 import books from "../config/bible_books";
 import ChapterSlide from "../components/bible/ChapterSlide";
+import PageIndicator from "../components/bible/PageIndicator";
 
 import bible_style from "../styles/SBible";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
@@ -55,38 +56,10 @@ export default class Bible extends Component {
   render() {
     return (
       <Animated.View style={bible_style.container}>
-        <View style={bible_style.Selection}>
-          <TouchableOpacity
-            delayPressIn={0}
-            style={bible_style.SelectionButtons}
-            onPress={() => this.setState({ isBookModalVisible: true })}
-          >
-            <Text
-              style={[
-                bible_style.selectionButtonText,
-                bible_style.use_fontFamily,
-              ]}
-            >
-              {/* {console.log(books[this.state.bookSelectedText])} */}
-              {this.state.bookSelectedText}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={bible_style.SelectionButtons}
-            onPress={() => this.setState({ isModalVisible: true })}
-          >
-            <Text
-              style={[
-                bible_style.selectionButtonText,
-                bible_style.use_fontFamily,
-              ]}
-            >
-              
-              Chapter {this.state.chapterSelected}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        
+        <PageIndicator
+        book_selected_text={this.state.bookSelectedText}
+        chapter_selected={this.state.chapterSelected}
+        />
         <Swiper 
         style={{backgroundColor: '#eee'}}
         loop={false}
@@ -134,49 +107,6 @@ export default class Bible extends Component {
           </View>
         </TouchableHighlight> */}
 
-        <Modal
-          animationType="slide"
-          visible={this.state.isBookModalVisible}
-          style={bible_style.modalContainer}
-          statusBarTranslucent={true}
-          onRequestClose={() => {
-            this.setState({ isBookModalVisible: false });
-          }}
-        >
-          <View style={bible_style.modalView}>
-            <View style={bible_style.modalHeaderContainer}>
-              <Text
-                style={[
-                  bible_style.modalHeaderText,
-                  bible_style.use_fontFamily,
-                ]}
-              >
-                Select Book
-              </Text>
-            </View>
-            <ScrollView style={bible_style.bookListContainer}>
-              {Object.keys(books).map((book) => {
-                return (
-                  <TouchableHighlight
-                    underlayColor={"#ccc"}
-                    style={bible_style.bookList}
-                    onPress={() => {
-                      this.setState({
-                        bookSelectedText: book,
-                        current_chapter: 0,
-                        isBookModalVisible: false,
-                      });
-                      
-                    }}>
-                    <View style={bible_style.bookListButton}>
-                      <Text style={[bible_style.use_fontFamily]}>{book}</Text>
-                    </View>
-                  </TouchableHighlight>
-                );
-              })}
-            </ScrollView>
-          </View>
-        </Modal>
 
         {/* <Modal
           animationType="slide"

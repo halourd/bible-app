@@ -7,8 +7,6 @@ const home_style = StyleSheet.create ({
         position: 'relative',
         zIndex: -1,
         flex: 1,
-        borderColor: 'red',
-        borderWidth: 1,
     },
     use_fontFamilyRegular: {
         fontFamily: 'ProductSans-Regular'

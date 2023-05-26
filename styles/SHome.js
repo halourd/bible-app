@@ -6,7 +6,9 @@ const home_style = StyleSheet.create ({
     container: {
         position: 'relative',
         zIndex: -1,
-        flex: 1
+        flex: 1,
+        borderColor: 'red',
+        borderWidth: 1,
     },
     use_fontFamilyRegular: {
         fontFamily: 'ProductSans-Regular'
@@ -22,16 +24,17 @@ const home_style = StyleSheet.create ({
         marginTop: 50,
         paddingVertical:20,
         flexDirection: "row",
+        alignItems: 'center',
     },
     menu: {
-        width: 25,
-        height: 30,
+        width: 20,
+        height: 20,
         marginBottom: 2,
         marginRight: 20,
         marginLeft: 20 
     },
     title: {
-        fontSize: 24,
+        fontSize: 20,
         fontFamily: 'ProductSans-Bold',
     },
     votdContainer: {
@@ -41,7 +44,7 @@ const home_style = StyleSheet.create ({
         marginHorizontal: 20,
     },
     verse: {
-        fontSize: 21,
+        fontSize: 19,
         fontFamily: 'ProductSans-Bold'
     },
     verseTitle: {

@@ -37,20 +37,32 @@ const data = [
 ];
 
 const Item = ({title, image, id}) => [
-    <TouchableOpacity activeOpacity={0.7}>
+    <TouchableOpacity 
+    activeOpacity={0.7}
+    onPress={()=> {
+        alert('Clicked!')
+    }}
+    >
         <View style={style.videos}>
-            <View>
+            <View style={style.thumbnail_container}>
                 <Image source={image} style={style.thumbnail}/>
+            <Text 
+            style={{
+                fontFamily: 'ProductSans-Bold', 
+                marginBottom: 10,
+            }}
+            numberOfLines={2}
+            ellipsizeMode='tail'
+            >{title}</Text>
             </View>
-            <Text style={{fontFamily: 'ProductSans-Bold', marginBottom: 10}}>{title}</Text>
         </View>
-    </TouchableOpacity>
+    </TouchableOpacity> 
 ];
 
 
 
 export default class Home extends Component{
-    constructor(props){
+    constructor(props){ 
         super(props);
 
         this.state = {
@@ -59,7 +71,7 @@ export default class Home extends Component{
                 chapter: '',
                 verse: '',
             },
-
+ 
             videos: []
         }
 
@@ -77,7 +89,7 @@ export default class Home extends Component{
     }
 
     componentDidMount(){ 
-        this.scanBook([Proverbs, Psalms, Genesis]); 
+        this.scanBook([Proverbs, Psalms]); 
         this.handleYTFetch();
     }
 
@@ -120,7 +132,7 @@ export default class Home extends Component{
                         data={this.state.videos}
                         renderItem={({item}) => <Item title={item.snippet.title} image={{uri: `${item.snippet.thumbnails.high.url}`}}/>}
                         horizontal 
-                        contentContainerStyle={{padding: 5}}
+                        contentContainerStyle={{margin: 20}}
                         contentInsetAdjustmentBehavior='never'
                         snapToAlignment='center'
                         decelerationRate='fast'
@@ -130,7 +142,7 @@ export default class Home extends Component{
                         scrollEventThrottle ={1}
                         snapToInterval={300}
                         contentOffset={{50:50}}
-                        key={item => `Block#${item.id}`}
+                        // key={item => `Block#${item.id+1}`}
                         /> 
                     </View>
                     <View style={style.Selection}>

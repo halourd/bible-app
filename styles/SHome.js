@@ -7,8 +7,6 @@ const home_style = StyleSheet.create ({
         position: 'relative',
         zIndex: -1,
         flex: 1,
-        borderColor: 'red',
-        borderWidth: 1,
     },
     use_fontFamilyRegular: {
         fontFamily: 'ProductSans-Regular'
@@ -64,10 +62,9 @@ const home_style = StyleSheet.create ({
         justifyContent: 'center',
         alignSelf: 'center',
         backgroundColor: 'white',
-        padding: 40,
-        height: 150,
-        width: 250,
-        marginHorizontal: 9,
+        padding: 20,
+        margin: 10,
+        height: 200,
         shadowColor: "#000",
         shadowOffset: {
         width: 0,
@@ -79,14 +76,21 @@ const home_style = StyleSheet.create ({
         borderRadius: 10
     },
     thumbnail: {
-        justifyContent:'center',
-        alignSelf: 'center',
-        height: 150,
-        width: 250,
+        height: '90%',
+        width: '100%',
         borderRadius: 10,
-        marginBottom: 5
-    }
+        marginBottom: 10,
+        resizeMode: 'cover'
+    },
 
+    thumbnail_container: {
+        justifyContent: 'center',
+        alignSelf: 'center',
+        width: 250,
+        height: 130,
+        marginVertical: 10,
+
+    }
 })
 
 export default home_style;

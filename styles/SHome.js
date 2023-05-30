@@ -19,10 +19,12 @@ const home_style = StyleSheet.create ({
         flex: 1
     },
     homeNavbar: {
-        marginTop: 50,
+        paddingTop:60,
         paddingVertical:20,
         flexDirection: "row",
         alignItems: 'center',
+        backgroundColor: 'rgba',
+        width: '100%',
     },
     menu: {
         width: 20,
@@ -86,7 +88,7 @@ const home_style = StyleSheet.create ({
     thumbnail_container: {
         justifyContent: 'center',
         alignSelf: 'center',
-        width: 250,
+        width: 220,
         height: 130,
         marginVertical: 10,
 

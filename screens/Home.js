@@ -10,9 +10,10 @@ import axios from 'react-native-axios';
 
 import Proverbs from '../chunks/Proverbs';
 import Psalms from '../chunks/Psalms';
+import Genesis from '../chunks/Genesis';
 
 import home_style from '../styles/SHome'
-import Genesis from '../chunks/Genesis';
+import {get_latest_videos} from '../helper/api/ytapi';
 
 const style = home_style
 const Stack = createStackNavigator();
@@ -47,21 +48,37 @@ const Item = ({title, image, id}) => [
 ];
 
 
+
 export default class Home extends Component{
     constructor(props){
-        super();
+        super(props);
 
         this.state = {
             votd: {
                 bookname: '',
                 chapter: '',
                 verse: '',
-            }
+            },
+
+            videos: []
         }
+
+        // this.handleYTFetch = this.handleYTFetch.bind(this)
     }
 
-    componentDidMount(){
-        this.scanBook([Proverbs, Psalms, Genesis]);
+    handleYTFetch = async () => {
+        const api_key = 'AIzaSyCHqzINr8faGkMvyp8Jj1AEa51CLxNOGlU';
+        const channel_id = 'UCFRj7FPKTthzA_gfE2PsGJQ';
+        // const [video_id, video_title, video_thumbnail] = YT_API.get_latest_videos(api_key, channel_id)
+        const fetched_videos = await get_latest_videos(api_key, channel_id)
+        this.setState({videos: fetched_videos})
+        console.log('[STATE]', this.state.videos)
+        // return fetched_videos;
+    }
+
+    componentDidMount(){ 
+        this.scanBook([Proverbs, Psalms, Genesis]); 
+        this.handleYTFetch();
     }
 
     scanBook = (book) => {
@@ -100,8 +117,8 @@ export default class Home extends Component{
                     <View style={style.videosContainer}>
                         <Text style={style.vidHeader}>Videos</Text>
                         <FlatList 
-                        data={data}
-                        renderItem={({item}) => <Item title={item.title} image={item.image}/>}
+                        data={this.state.videos}
+                        renderItem={({item}) => <Item title={item.snippet.title} image={{uri: `${item.snippet.thumbnails.high.url}`}}/>}
                         horizontal 
                         contentContainerStyle={{padding: 5}}
                         contentInsetAdjustmentBehavior='never'

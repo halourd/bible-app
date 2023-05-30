@@ -62,10 +62,10 @@ const home_style = StyleSheet.create ({
         justifyContent: 'center',
         alignSelf: 'center',
         backgroundColor: 'white',
-        padding: 20,
+        padding: 40,
         height: 150,
         width: 250,
-        marginHorizontal: 15,
+        marginHorizontal: 9,
         shadowColor: "#000",
         shadowOffset: {
         width: 0,
@@ -79,8 +79,8 @@ const home_style = StyleSheet.create ({
     thumbnail: {
         justifyContent:'center',
         alignSelf: 'center',
-        height: 100,
-        width: 230,
+        height: auto,
+        width: auto,
         borderRadius: 10,
         marginBottom: 5
     }

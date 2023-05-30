@@ -81,8 +81,8 @@ const home_style = StyleSheet.create ({
     thumbnail: {
         justifyContent:'center',
         alignSelf: 'center',
-        height: auto,
-        width: auto,
+        height: 150,
+        width: 250,
         borderRadius: 10,
         marginBottom: 5
     }

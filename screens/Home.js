@@ -14,13 +14,15 @@ import Genesis from '../chunks/Genesis';
 
 import home_style from '../styles/SHome'
 import {get_latest_videos} from '../helper/api/ytapi';
+import { getStorage } from '../helper/storage/async-storage';
+import { setStorage } from '../helper/storage/async-storage';
 
 const style = home_style
 const Stack = createStackNavigator();
 
 const Item = ({title, image, videoId}) => [
     <TouchableNativeFeedback
-    onPress={()=> Linking.openURL(`vnd.youtube://www.youtube.com/watch?v=${videoId}`)}
+    onPress={()=> Linking.openURL(`vnd.youtube://www.youtube.com/watch?v=${videoId}`).then(console.log(getStorage('votd')))}
     >
         <View style={style.videos}>
             <View style={style.thumbnail_container}>
@@ -57,6 +59,10 @@ export default class Home extends Component{
         // this.handleYTFetch = this.handleYTFetch.bind(this)
     }
 
+    // updateVerseInterval = () => {
+    //     this.verseUpdateInterval = setInterval(this.updateDailyVerse, 24 * 60 * 60 * 1000);
+    // }
+
     handleYTFetch = async () => {
         const api_key = 'AIzaSyCHqzINr8faGkMvyp8Jj1AEa51CLxNOGlU';
         const channel_id = 'UCFRj7FPKTthzA_gfE2PsGJQ';
@@ -68,11 +74,12 @@ export default class Home extends Component{
     }
 
     componentDidMount(){ 
-        this.scanBook([Proverbs, Psalms]); 
+        this.scanBookAndGenerateRandVerse([Proverbs, Psalms]); 
         this.handleYTFetch();
+        
     }
 
-    scanBook = (book) => {
+    scanBookAndGenerateRandVerse = (book) => {
         let chosen_book = book[Math.floor(Math.random() * book.length)]
         let get_rand_num = Math.floor(Math.random() * chosen_book.length)
         this.setState({ 

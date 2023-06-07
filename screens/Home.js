@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
-import {Text, ScrollView, View, FlatList, TouchableNativeFeedback,TouchableOpacity, Image, ImageBackground} from 'react-native';
+import {Text, ScrollView, View, FlatList, TouchableNativeFeedback,TouchableOpacity, Image, ImageBackground, Linking} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import NavigationBar from '../components/NavigationBar';
@@ -18,11 +18,9 @@ import {get_latest_videos} from '../helper/api/ytapi';
 const style = home_style
 const Stack = createStackNavigator();
 
-const Item = ({title, image, id}) => [
+const Item = ({title, image, videoId}) => [
     <TouchableNativeFeedback
-    onPress={()=> {
-        alert('Clicked!')
-    }}
+    onPress={()=> Linking.openURL(`vnd.youtube://www.youtube.com/watch?v=${videoId}`)}
     >
         <View style={style.videos}>
             <View style={style.thumbnail_container}>
@@ -114,7 +112,7 @@ export default class Home extends Component{
                             <Text style={style.vidHeader}>Videos</Text>
                             <FlatList 
                             data={this.state.videos}
-                            renderItem={({item}) => <Item title={item.snippet.title} image={{uri: `${item.snippet.thumbnails.high.url}`}}/>}
+                            renderItem={({item}) => <Item title={item.snippet.title} image={{uri: `${item.snippet.thumbnails.high.url}`}} videoId={item.id.videoId}/>}
                             horizontal 
                             contentContainerStyle={{margin: 20}}
                             contentInsetAdjustmentBehavior='never'

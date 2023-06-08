@@ -8,9 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import PubNub from "pubnub";
-import uuid from "react-native-uuid";
-import {PubNubProvider} from "pubnub-react";
+
 import Clipboard from '@react-native-clipboard/clipboard';
 import sync_style from "../styles/SSync";
 
@@ -36,15 +34,15 @@ export default class Sync extends Component {
     remove_listener(this.state.code)
   }
 
-  // copyToClipboard = async () => {
-  //   try {
-  //     await this.Clipboard.setString('Hellow World!');
-  //     const text = await this.Clipboard.getString();
-  //     console.log(text);
-  //   }catch(e){
-  //     console.log(e)
-  //   }
-  // }
+  copyToClipboard = async () => {
+    try {
+      await this.Clipboard.setString('Hellow World!');
+      const text = await this.Clipboard.getString();
+      console.log(text);
+    }catch(e){
+      console.log(e)
+    }
+  }
 
 
   render() {
@@ -124,7 +122,7 @@ export default class Sync extends Component {
               style={sync_style.syncButton}
               onPress={ () => {
                 this.setState({code:generate_code()})
-                // this.copyToClipboard()
+                this.copyToClipboard()
               }}
               
               >

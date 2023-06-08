@@ -2,6 +2,9 @@ import PubNub from "pubnub";
 import uuid from "react-native-uuid";
 // import {PubNubProvider} from "pubnub-react";
 
+//import request validator
+import {validate_code} from '../validation/validate';
+
 const pubnub = new PubNub({
     publishKey: "pub-c-5afbc200-ee65-45fd-88a0-f6a9a0ef3d1f",
     subscribeKey: "sub-c-d8c748dd-be1b-41d8-8e1f-89b1ec7fd6d6",
@@ -29,10 +32,17 @@ export const listen_for_copy = (code) => {
     pubnub.subscribe({
         channels: [code],
     });
+    
     console.log('Listening for copy request.....')
 }
 
-//Send copy request
+/*
+    ==============================================================
+    - Send request
+    - Scan the folder where notes are located
+    ==============================================================
+*/
+
 export const send_request = (code) => {
     pubnub.publish({
         channel: [code],
@@ -54,5 +64,7 @@ export const remove_listener = (code) => {
         channels: [code],
     });
 }
+
+
 
 

@@ -136,7 +136,14 @@ const sync_style = StyleSheet.create({
     buttonTextContainerNotes: {
         flexDirection: 'column-reverse'
 
-    }
+    },
+
+    /*  
+        Style for disabling button 
+        while finding sync 
+    */
+
+
 
 })
 

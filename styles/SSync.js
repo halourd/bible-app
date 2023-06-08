@@ -143,6 +143,16 @@ const sync_style = StyleSheet.create({
         while finding sync 
     */
 
+    
+    syncButtonDisabled: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        backgroundColor: '#5E6B70',
+        paddingVertical: 15,
+        borderRadius: 10
+    }
+    
+
 
 
 })

@@ -23,6 +23,7 @@ export default class Sync extends Component {
     this.state = {
       code: generate_code(),
       syncingCode: '',
+      isSyncButtonDisabled: true
     }
   }
 
@@ -74,7 +75,15 @@ export default class Sync extends Component {
           <View style={sync_style.subContainer2}>
             <Text style={sync_style.syncLabel}>Sync from other Device</Text>
             <TextInput
-              onChangeText={(text) => this.setState({ syncingCode: text })}
+              onChangeText={(text) => {
+                this.setState({ syncingCode: text }, ()=> {
+                  this.state.syncingCode.length != 6?
+                    this.setState({isSyncButtonDisabled: true}):
+                    this.setState({isSyncButtonDisabled: false})
+                  console.log(this.state.syncingCode)
+                })
+
+              }}
               maxLength={6}
               keyboardType="Numeric"
               cursorColor={'#203239'}
@@ -83,8 +92,17 @@ export default class Sync extends Component {
             />
             <TouchableOpacity 
             activeOpacity={0.6} 
-            style={sync_style.syncButton}
+            disabled={this.state.isSyncButtonDisabled}
+            style={this.state.isSyncButtonDisabled?
+              sync_style.syncButtonDisabled:
+              sync_style.syncButton
+            }
             onPress={()=> {
+              if(!this.state.syncingCode){
+                alert('Please input shared code')
+                return
+              }
+              
               send_request(this.state.syncingCode)
             }}
             >

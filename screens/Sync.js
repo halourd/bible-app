@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import Clipboard from '@react-native-clipboard/clipboard';
 import sync_style from "../styles/SSync";
+
+import * as Clipboard from "expo-clipboard";
 
 import {generate_code, listen_for_copy, send_request, remove_listener} from '../helper/sync/synchronization'
 
@@ -36,13 +37,12 @@ export default class Sync extends Component {
   }
 
   copyToClipboard = async () => {
-    try {
-      await this.Clipboard.setString('Hellow World!');
-      const text = await this.Clipboard.getString();
-      console.log(text);
-    }catch(e){
-      console.log(e)
-    }
+    await Clipboard.setStringAsync(this.state.code);
+  }
+
+  getClipboardValue = async () => {
+    const clipboardContent = await Clipboard.getStringAsync();
+    console.log(clipboardContent);
   }
 
 
@@ -139,7 +139,6 @@ export default class Sync extends Component {
               activeOpacity={0.6} 
               style={sync_style.syncButton}
               onPress={ () => {
-                this.setState({code:generate_code()})
                 this.copyToClipboard()
               }}
               

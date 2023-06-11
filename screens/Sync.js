@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ToastAndroid
 } from "react-native";
 
 import sync_style from "../styles/SSync";
@@ -38,6 +39,7 @@ export default class Sync extends Component {
 
   copyToClipboard = async () => {
     await Clipboard.setStringAsync(this.state.code);
+    ToastAndroid.show('Code successfully copied', ToastAndroid.SHORT);
   }
 
   getClipboardValue = async () => {

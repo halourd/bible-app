@@ -6,8 +6,9 @@ import NavigationBar from '../components/NavigationBar';
 import NoteBlock from '../components/notes/NoteBlock';
 import styles from '../styles/SNotes';
 import { ScrollView } from 'react-native-gesture-handler';
+import * as FileSystem from 'expo-file-system'
 
-export default class App extends Component {
+export default class Notes extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -28,27 +29,10 @@ export default class App extends Component {
         </View>
 
         <ScrollView>
-        <TouchableOpacity 
-        activeOpacity={0.6}
-        onPress={() => {
-          alert('Functionality not yet implemented.');
-        }}
-        style={styles.headerNotes}>
-          <View>
-            <View style={styles.notesContainer}>
-              <Text style={styles.notesTitle}>Prayer Meeting</Text>
-              <Text style={styles.notesDate}>12/13</Text>
-            </View>
-            <View style={styles.notesContainer1}>
-              <View style={styles.verses}>
-                <Text style={styles.noteverses}>1Cor 1:1</Text>
-                <Text style={styles.noteverses}>1Cor 1:2</Text>
-                <Text style={styles.noteverses}>1Cor 1:3</Text>
-              </View>
-            </View>
-          </View>
-        </TouchableOpacity>
-        <NoteBlock />
+        <NoteBlock 
+        navigation={this.props.navigation}
+        />
+
         </ScrollView>
         <NavigationBar name="Home" navigation={this.props.navigation} />
       </View>

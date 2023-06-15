@@ -140,7 +140,7 @@ export default class Sync extends Component {
               <TouchableOpacity 
               activeOpacity={0.6} 
               style={sync_style.syncButton}
-              onPress={ () => {
+              onPress={()=> {
                 this.copyToClipboard()
               }}
               

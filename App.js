@@ -11,6 +11,7 @@ import Home from './screens/Home'
 import Notes from './screens/Notes'
 import Search from './screens/Search'
 import Sync from './screens/Sync';
+import EditNote from './screens/EditNote';
 
 // import navigation from './config/navigation'
 const Tab = createBottomTabNavigator();
@@ -88,6 +89,14 @@ export default class App extends Component {
           <Tab.Screen 
           name="Sync" 
           component={Sync}
+          options={{
+            headerShown: false,
+            tabBarStyle: { display: "none" },
+          }} /> 
+
+          <Tab.Screen 
+          name="Edit Note" 
+          component={EditNote}
           options={{
             headerShown: false,
             tabBarStyle: { display: "none" },

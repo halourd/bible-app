@@ -10,7 +10,7 @@ export default class NoteBlock extends Component {
                 <TouchableOpacity
                     activeOpacity={0.6}
                     onPress={() => {
-                        alert('Functionality not yet implemented.');
+                        this.props.navigation.navigate('Edit Note')
                     }}
                     style={styles.headerNotes}>
                     <View>

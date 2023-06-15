@@ -4,6 +4,7 @@ import {Pressable, KeyboardAvoidingView, Keyboard, Text, View, TouchableOpacity,
 
 import search_style from '../styles/SSearch';
 import { TextInput } from 'react-native-gesture-handler';
+import CustomHeader from '../components/CustomHeader';
 
 
 export default class Search extends Component{
@@ -21,8 +22,9 @@ export default class Search extends Component{
     render(){
         return(
             <KeyboardAvoidingView style={[search_style.container]}>
+                <CustomHeader navigation={this.props.navigation}/>
                 <Pressable onPress={()=> {Keyboard.dismiss()}}>
-                    <View style={search_style.searchHeaderContainer}>
+                    {/* <View style={search_style.searchHeaderContainer}>
                         <TouchableOpacity 
                         activeOpacity={0.4} 
                         style={search_style.searchHeader}
@@ -31,7 +33,7 @@ export default class Search extends Component{
                             <Image source={require('../assets/pngs/arrow_left.png')} style={search_style.searchIcon}/>
                         </TouchableOpacity>
                         <Text style={[search_style.searchHeaderText, search_style.use_fontFamilyBold]}>Search</Text>
-                    </View>
+                    </View> */}
 
                     <View style={search_style.searchBodyContainer}>
                         <View style={search_style.searchBody}>

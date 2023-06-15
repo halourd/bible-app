@@ -17,6 +17,7 @@
     "dotenv": "^16.0.3",
     "expo": "~47.0.9",
     "expo-clipboard": "^4.1.2",
+    "expo-file-system": "^15.2.2",
     "expo-font": "^11.0.1",
     "expo-status-bar": "~1.4.2",
     "fs": "^0.0.1-security",

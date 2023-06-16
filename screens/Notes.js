@@ -22,6 +22,10 @@ export default class Notes extends Component {
   }
 
   async componentDidMount(){
+    this.refreshNoteList()
+  }
+
+  refreshNoteList = async () => {
     const notes = await readNotes();
     this.setState({noteList: notes})
   }
@@ -29,9 +33,7 @@ export default class Notes extends Component {
   handleRefresh = async () => {
     this.setState({ refreshing: true });
 
-    const notes = await readNotes();
-    this.setState({noteList: notes})
-
+    this.refreshNoteList()
     setTimeout(() => {
         this.setState({ refreshing: false });
     }, 500);
@@ -84,7 +86,7 @@ export default class Notes extends Component {
                 navigation={this.props.navigation}
                 on_click={()=>{
                   // createNote()
-                  deleteNotes(note.fileName).then(this.showToast("Note Deleted"))
+                  deleteNotes(note.fileName).then(this.showToast(`${note.fileName} deleted`)).then(this.refreshNoteList)
                 }}
               />
             })

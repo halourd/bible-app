@@ -9,10 +9,10 @@ const readNotes = async () => {
         const notePath = notesDirectory + fileName;
         const noteContent = await FileSystem.readAsStringAsync(notePath);
 
-        // const fileInfo = await FileSystem.getInfoAsync(notePath);
-        // const creationDate = fileInfo.creationTime;
+        const fileInfo = await FileSystem.getInfoAsync(notePath);
+        const creationDate = fileInfo.creationTime;
 
-        // console.log(creationDate)
+        console.log(notePath)
         return { fileName, content: noteContent };
       })
     );

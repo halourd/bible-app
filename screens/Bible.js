@@ -1,22 +1,12 @@
-import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import {
-  StyleSheet,
   Animated,
   Text,
   View,
-  Image,
-  TouchableOpacity,
   ScrollView,
-  FlatList,
   Modal,
   TouchableHighlight,
-  TouchableNativeFeedback,
 } from "react-native";
-// import { useIsFocused } from "@react-navigation/native";
-// import { NavigationContainer } from "@react-navigation/native";
-// import { createStackNavigator } from "@react-navigation/stack";
 import NavigationBar from "../components/NavigationBar";
 import Swiper from '../node_modules/react-native-swiper'
 
@@ -25,8 +15,6 @@ import ChapterSlide from "../components/bible/ChapterSlide";
 import PageIndicator from "../components/bible/PageIndicator";
 
 import bible_style from "../styles/SBible";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-// import { FlatList } from 'react-native-gesture-handler';
 
 const countChapters = (book) => {
   let chapters = [];

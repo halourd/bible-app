@@ -1,8 +1,7 @@
-import React, {Component} from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity, TouchableNativeFeedback } from 'react-native'
+import {Component} from 'react'
+import { Text, View, Image, TouchableNativeFeedback } from 'react-native'
 import SNavBar from '../styles/component/SNavBar'
 
-import Bible from '../screens/Bible';
 // import SvgUri from 'react-native-svg-uri'
 
 export default class NavigationBar extends Component {

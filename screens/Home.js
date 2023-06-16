@@ -1,16 +1,11 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import {Text, ScrollView, View, FlatList, TouchableNativeFeedback,TouchableOpacity, Image, ImageBackground, Linking} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import NavigationBar from '../components/NavigationBar';
-import { Dimensions } from 'react-native';
-import axios from 'react-native-axios';
 
 import Proverbs from '../chunks/Proverbs';
 import Psalms from '../chunks/Psalms';
-import Genesis from '../chunks/Genesis';
 
 import home_style from '../styles/SHome'
 import {get_latest_videos} from '../helper/api/ytapi';
@@ -18,7 +13,6 @@ import { getStorage } from '../helper/storage/async-storage';
 import { setStorage } from '../helper/storage/async-storage';
 
 const style = home_style
-const Stack = createStackNavigator();
 
 const Item = ({title, image, videoId}) => [
     <TouchableNativeFeedback

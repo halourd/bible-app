@@ -38,10 +38,12 @@ export default class Notes extends Component {
   };
 
   showToast =(msg)=> {
-    ToastAndroid.showWithGravity(
+    ToastAndroid.showWithGravityAndOffset(
       msg,
-      ToastAndroid.SHORT,
-      ToastAndroid.CENTER,
+      ToastAndroid.LONG,
+      ToastAndroid.TOP,
+      0,
+      90,
     );
   }
 
@@ -76,6 +78,7 @@ export default class Notes extends Component {
           {
             this.state.noteList.map((note)=>{
               return <NoteBlock
+                key={note.fileName}
                 note_title={note.fileName}
                 note_content={note.content}
                 navigation={this.props.navigation}

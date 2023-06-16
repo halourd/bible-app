@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import {View, Text, TouchableNativeFeedback, ScrollView} from 'react-native'
+import uuid from 'react-native-uuid'
 
 import bible_style from '../../styles/SBible';
 
@@ -12,9 +13,11 @@ export default class ChapterSlide extends Component {
             showsVerticalScrollIndicator={false}
             alwaysBounceVertical={true}
             fadingEdgeLength={300}
+            key={`${uuid.v4()}`}
             >
                 <View 
-                key={`${this.props.book_selected}_${this.props.chapter_selected}`}
+                // key={`${this.props.book_selected}_${this.props.chapter_selected}`}
+                key={`${uuid.v4()}`}
                 style={bible_style.scrollView}>
                 {books[this.props.book_selected].map((item, index) => {
                     if (
@@ -28,7 +31,7 @@ export default class ChapterSlide extends Component {
                         }}
                         >
                         <View 
-                        key={index}
+                        key={`${uuid.v4()}`}
                         style={bible_style.VerseViewContainer}>
                             <View style={bible_style.verseNumber}>
                             <Text

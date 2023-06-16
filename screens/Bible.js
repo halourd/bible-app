@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import "react-native-gesture-handler";
+import { Component } from "react";
 import {
   Animated,
   Text,
@@ -7,14 +8,17 @@ import {
   Modal,
   TouchableHighlight,
 } from "react-native";
+
 import NavigationBar from "../components/NavigationBar";
 import Swiper from '../node_modules/react-native-swiper'
+import uuid from 'react-native-uuid'
 
 import books from "../config/bible_books";
 import ChapterSlide from "../components/bible/ChapterSlide";
 import PageIndicator from "../components/bible/PageIndicator";
 
 import bible_style from "../styles/SBible";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const countChapters = (book) => {
   let chapters = [];
@@ -74,9 +78,9 @@ export default class Bible extends Component {
           {
             countChapters(books[this.state.bookSelectedText]).map((item, index) => {
               return (
-                  <View>
+                  <View key={`${uuid.v4()}`}>
                     <ChapterSlide 
-                    key={`${index}_${item}`}
+                    key={`${index}_${uuid}`}
                     book_selected={this.state.bookSelectedText}
                     chapter_selected={item}
                     />
@@ -144,7 +148,9 @@ export default class Bible extends Component {
                       });
                       
                       console.log(this.state.bookSelectedText)
-                    }}>
+                    }}
+                    key={`${uuid.v4()}`}
+                    >
                     <View style={bible_style.bookListButton}>
                       <Text style={[bible_style.use_fontFamily]}>{book}</Text>
                     </View>

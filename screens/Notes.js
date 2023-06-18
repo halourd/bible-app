@@ -84,6 +84,7 @@ export default class Notes extends Component {
           {/* show this message if list is empty */}
           {this.state.noteList.length === 0 ? (
             <View style={styles.emptyNoteListContainer}>
+              <Image style={{marginBottom: 20}} source={require("../assets/pngs/noteList.png")}/>
               <Text style={styles.emptyNoteList}>
                 Notes you created will be displayed here
               </Text>

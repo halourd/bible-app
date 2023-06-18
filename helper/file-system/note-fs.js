@@ -8,11 +8,10 @@ const readNotes = async () => {
       noteFileNames.map(async (fileName) => {
         const notePath = notesDirectory + fileName;
         const noteContent = await FileSystem.readAsStringAsync(notePath);
-
+        
         const fileInfo = await FileSystem.getInfoAsync(notePath);
         const creationDate = fileInfo.creationTime;
-
-        console.log(notePath)
+      
         return { fileName, content: noteContent };
       })
     );
@@ -20,13 +19,14 @@ const readNotes = async () => {
     return notes
   }
   
-const createNote = async () => {
+const createNote = async (note_title, note_content) => {
+    const noteContent = note_content.trim()
     const notesDirectory = `${FileSystem.documentDirectory}notes/`;
-    const noteFileName = `${Date.now()}.txt`;
+    const noteFileName = `${note_title}_${Date.now()}.txt`;
     const notePath = notesDirectory + noteFileName;
   
     await FileSystem.makeDirectoryAsync(notesDirectory, { intermediates: true });
-    await FileSystem.writeAsStringAsync(notePath, "hiiiiiiiiiiiii");
+    await FileSystem.writeAsStringAsync(notePath, noteContent);
   
     console.log('Note created successfully!', );
   }

@@ -18,7 +18,10 @@ export default class NoteBlock extends Component {
                             <Text style={styles.notesDate}>12/13</Text>
                         </View>
                         <View style={styles.notesContainer1}>
-                            <View style={styles.verses}>
+                            <View 
+                            numberOfLines={3}
+                            ellipsizeMode="tail"
+                            style={styles.verses}>
                                 <Text style={styles.noteverses}>{this.props.note_content}</Text>
                             </View>
                         </View>

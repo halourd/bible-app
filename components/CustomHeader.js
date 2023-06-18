@@ -3,6 +3,9 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 
 import header_style from "../styles/component/SHeader";
 
+//for NOTE CRUD
+import { readNotes, createNote } from "../helper/file-system/note-fs";
+
 export default class CustomHeader extends Component {
   render() {
     return (
@@ -10,7 +13,7 @@ export default class CustomHeader extends Component {
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("Notes");
+              this.props.navigation.goBack();
             }}
           >
             <View style={header_style.backButtonContainer}>
@@ -31,6 +34,12 @@ export default class CustomHeader extends Component {
           <TouchableOpacity
           disabled={this.props.isDisabled}
           activeOpacity={0.7}
+          onPress={()=>{
+
+            createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
+            this.props.navigation.goBack()
+
+          }}
           style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
             <View>
               <Text style={header_style.saveButtonText}>Save</Text>

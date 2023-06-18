@@ -13,7 +13,6 @@ import NavigationBar from "../components/NavigationBar";
 import NoteBlock from "../components/notes/NoteBlock";
 import styles from "../styles/SNotes";
 import { ScrollView } from "react-native-gesture-handler";
-import * as FileSystem from "expo-file-system";
 
 import {
   readNotes,
@@ -33,12 +32,16 @@ export default class Notes extends Component {
   }
 
   async componentDidMount() {
+
     this.refreshNoteList();
   }
 
   refreshNoteList = async () => {
     const notes = await readNotes();
+    console.log("noteeeeess", notes)
     this.setState({ noteList: notes });
+    console.log(this.state.noteList)
+
   };
 
   handleRefresh = async () => {
@@ -83,13 +86,20 @@ export default class Notes extends Component {
 
           {/* show this message if list is empty */}
           {this.state.noteList.length === 0 ? (
-            <View style={styles.emptyNoteListContainer}>
+            <ScrollView 
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this.handleRefresh}
+              />
+            }
+            contentContainerStyle={styles.emptyNoteListContainer}>
               <Image style={{marginBottom: 20}} source={require("../assets/pngs/noteList.png")}/>
               <Text style={styles.emptyNoteList}>
                 Notes you created will be displayed here
               </Text>
               <Text style={styles.emptyNoteList}>Click + to create a note</Text>
-            </View>
+            </ScrollView>
           ) : (
             <ScrollView
               contentContainerStyle={styles.containerStyle}
@@ -104,12 +114,12 @@ export default class Notes extends Component {
                 return (
                   <NoteBlock
                     key={note.fileName}
-                    note_title={note.fileName}
+                    note_title={note.fileName.split('_')[0].toString()}
                     note_content={note.content}
                     navigation={this.props.navigation}
                     on_click={() => {
                       deleteNotes(note.fileName)
-                        .then(this.showToast(`${note.fileName} deleted`))
+                        .then(this.showToast(`${note.fileName.split('_')[0].toString()} deleted`))
                         .then(this.refreshNoteList);
                     }}
                   />
@@ -122,7 +132,7 @@ export default class Notes extends Component {
           activeOpacity={0.7}
           style={styles.addNoteButtonContainer}
           onPressOut={() => {
-            this.props.navigation.navigate('Manage Note', {headerTitle: "Add Note"})
+            this.props.navigation.navigate('Manage Note', {headerTitle: "Add Note", resetField: true})
           }}
           >
             <View style={{paddingHorizontal: 10}}>

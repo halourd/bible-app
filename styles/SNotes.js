@@ -6,6 +6,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+  //style for contentContainerStyle prop
+  containerStyle: {
+    paddingTop: 7.5,
+    paddingBottom: 80,
+  },
+
   use_fontFamily: {
     fontFamily: "ProductSans-Regular",
   },
@@ -34,6 +40,30 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
+  addNoteButtonContainer: {
+    alignItems: 'center',
+    backgroundColor: "#fff",
+    padding: 15,
+    width: 70,
+    borderRadius: 15,
+    position: "absolute",
+    bottom: '15%',
+    right: 40,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
+
+  addNoteButtonText: {
+    fontSize:29
+  },
+
   titleName: {  
     fontSize: 24,
     fontFamily: "ProductSans-Bold",
@@ -45,6 +75,18 @@ const styles = StyleSheet.create({
   notes: {
     marginTop: 20,
   },
+
+  emptyNoteListContainer: {
+    height: '88.5%',
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  emptyNoteList: {
+    color: 'gray',
+    fontStyle: 'italic'
+  },  
 
   headerNotes: {
     padding: 20,

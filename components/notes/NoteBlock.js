@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, TouchableHighlight } from 'react-native';
 
 import styles from '../../styles/SNotes';
 
@@ -7,8 +7,9 @@ export default class NoteBlock extends Component {
     render() {
         return (
             <View>
-                <TouchableOpacity
+                <TouchableHighlight
                     activeOpacity={0.6}
+                    underlayColor="#EEEEDD"
                     onPress={this.props.on_click}
                     style={styles.headerNotes}>
                     <View>
@@ -22,7 +23,8 @@ export default class NoteBlock extends Component {
                             </View>
                         </View>
                     </View>
-                </TouchableOpacity>
+                    
+                </TouchableHighlight>
             </View>
         )
     }

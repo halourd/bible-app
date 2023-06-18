@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, Image} from "react-native";
 import CustomHeader from "../components/CustomHeader";
 import note_preview_style from '../styles/SEditNote'
 
-export default class EditNote extends Component {
+export default class ManageNote extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>

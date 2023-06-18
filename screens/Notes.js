@@ -38,9 +38,7 @@ export default class Notes extends Component {
 
   refreshNoteList = async () => {
     const notes = await readNotes();
-    console.log("noteeeeess", notes)
     this.setState({ noteList: notes });
-    console.log(this.state.noteList)
 
   };
 
@@ -117,10 +115,14 @@ export default class Notes extends Component {
                     note_title={note.fileName.split('_')[0].toString()}
                     note_content={note.content}
                     navigation={this.props.navigation}
-                    on_click={() => {
+                    on_long_press={()=> {
                       deleteNotes(note.fileName)
                         .then(this.showToast(`${note.fileName.split('_')[0].toString()} deleted`))
                         .then(this.refreshNoteList);
+                    }}
+                    on_click={() => {
+                      this.props.navigation.navigate('Manage Note', {headerTitle: note.fileName.split('_')[0].toString()})
+
                     }}
                   />
                 );

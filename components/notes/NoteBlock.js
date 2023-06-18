@@ -11,6 +11,7 @@ export default class NoteBlock extends Component {
                     activeOpacity={0.6}
                     underlayColor="#EEEEDD"
                     onPress={this.props.on_click}
+                    onLongPress={this.props.on_long_press}
                     style={styles.headerNotes}>
                     <View>
                         <View style={styles.notesContainer}>

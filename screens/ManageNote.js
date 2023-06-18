@@ -29,6 +29,7 @@ export default class ManageNote extends Component {
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <StatusBar style="auto" />
         <CustomHeader 
+        go_to_page='Notes'
         navigation={this.props.navigation} 
         isDisabled={this.state.save_button_disabled} 
         has_save_button={true} 

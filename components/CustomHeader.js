@@ -13,7 +13,7 @@ export default class CustomHeader extends Component {
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.goBack();
+              this.props.navigation.navigate(`${this.props.go_to_page}`);
             }}
           >
             <View style={header_style.backButtonContainer}>

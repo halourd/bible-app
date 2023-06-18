@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     marginVertical: 7.5,
     marginHorizontal: 30,
     borderRadius: 10,
-    backgroundColor: "#white",
+    backgroundColor: "white",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

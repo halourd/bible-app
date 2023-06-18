@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const SNavBar = StyleSheet.create({
     mainContainer: {
-        backgroundColor: "#203239",
+        backgroundColor: "#162F65",
         flex: 0,
         flexDirection: 'row',
         // marginHorizontal: 30,

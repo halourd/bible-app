@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 
   addNoteButtonContainer: {
     alignItems: 'center',
-    backgroundColor: "#fff",
+    backgroundColor: "#E8C766",
     padding: 15,
     width: 70,
     borderRadius: 15,
@@ -61,7 +61,9 @@ const styles = StyleSheet.create({
   },
 
   addNoteButtonText: {
-    fontSize:29
+    fontSize:29,
+    color: 'white',
+    fontFamily: "ProductSans-Bold",
   },
 
   titleName: {  
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     marginVertical: 7.5,
     marginHorizontal: 30,
     borderRadius: 10,
-    backgroundColor: "#EEEDDE",
+    backgroundColor: "white",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

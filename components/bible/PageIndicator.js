@@ -57,7 +57,7 @@ export default class ChapterSlide extends Component {
           style={[bible_style.SelectionButtons, {
             paddingHorizontal: 0,
             paddingVertical: 12,
-            backgroundColor: "#E0DDAA",
+            backgroundColor: "#E8C766",
           }]}
           onPress={() => {
             this.props.navigation.navigate('Search')

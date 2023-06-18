@@ -48,11 +48,9 @@ const styles = StyleSheet.create({
 
   headerNotes: {
     padding: 20,
-    marginTop: 15,
+    marginVertical: 7.5,
     marginHorizontal: 30,
-
     borderRadius: 10,
-
     backgroundColor: "#EEEDDE",
     shadowColor: "#000",
     shadowOffset: {

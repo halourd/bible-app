@@ -121,7 +121,7 @@ export default class Notes extends Component {
           activeOpacity={0.7}
           style={styles.addNoteButtonContainer}
           onPressOut={() => {
-            this.props.navigation.navigate('Edit Note')
+            this.props.navigation.navigate('Manage Note', {headerTitle: "Add Note"})
           }}
           >
             <View style={{paddingHorizontal: 10}}>

@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-import { View, KeyboardAvoidingView, Text, TouchableOpacity, Image, TextInput} from "react-native";
+import { View, KeyboardAvoidingView, Text, TouchableOpacity, Keyboard, Image, TextInput} from "react-native";
 
 import CustomHeader from "../components/CustomHeader";
-import styles from '../styles/SManageNote'
+import styles from '../styles/SEditNote'
 
 import { readNotes, createNote } from "../helper/file-system/note-fs";
 
-export default class ManageNote extends Component {
+export default class AddNote extends Component {
   constructor(props){
     super(props);
 
@@ -21,9 +21,19 @@ export default class ManageNote extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.setState({noteTitle:"", noteContent: "",})
+
+  componentDidMount(){
+    this.firstTextInputRef.current?
+    [this.firstTextInputRef.current.focus(), Keyboard.isVisible(true)]:
+    this.firstTextInputRef.current.focus()
   }
+
+  clearFieldsOnSave(){
+    if(this.props.route.params.resetFields == true){
+      this.setState({noteTitle: '', noteContent: ''})
+    }
+  }
+
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -35,20 +45,27 @@ export default class ManageNote extends Component {
         has_save_button={true} 
         header_title={this.props.route.params.headerTitle}
         pass_note_data={{title: this.state.noteTitle, content: this.state.noteContent}}
+        on_save={()=> {
+          this.setState({noteContent: '', noteTitle: '', save_button_disabled: true})
+        }}
         />
         <View>  
           <View style={styles.titleEditorContainer}>
+            {console.log(this.state.noteTitle)}
             <TextInput
             ref={this.firstTextInputRef}
             clearButtonMode="while-editing"
             returnKeyType="next"
+            value={this.state.noteTitle}
             placeholder="Title"
             cursorColor={'#203239'}
             style={styles.titleEditor}
             onChangeText={(title)=> {
               this.setState({noteTitle: title}, ()=>{
-                this.state.noteTitle.length > 0 ?
-                  this.setState({save_button_disabled: false})
+                this.state.noteTitle.length >= 0 ?
+                  this.setState({save_button_disabled: false}, ()=> {
+
+                  })
                   :
                   this.setState({save_button_disabled: true})
               })
@@ -64,6 +81,7 @@ export default class ManageNote extends Component {
           <View style={styles.noteEditingFieldContainer}>
             <TextInput
               ref={this.secondTextInputRef}
+              value={this.state.noteContent}
               scrollEnabled={true}
               textAlignVertical="top"
               multiline={true}

@@ -7,6 +7,12 @@ import header_style from "../styles/component/SHeader";
 import { readNotes, createNote } from "../helper/file-system/note-fs";
 
 export default class CustomHeader extends Component {
+
+  createNewNote(){
+    createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
+    this.props.navigation.navigate(this.props.go_to_page)
+  }
+
   render() {
     return (
       <View style={header_style.headerContainer}>
@@ -34,15 +40,30 @@ export default class CustomHeader extends Component {
           <TouchableOpacity
           disabled={this.props.isDisabled}
           activeOpacity={0.7}
-          onPress={()=>{
-
-            createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
-            this.props.navigation.goBack()
-
+          onPress={()=> {
+            this.createNewNote();
+            this.props.on_save();
           }}
+
           style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
             <View>
               <Text style={header_style.saveButtonText}>Save</Text>
+            </View>
+          </TouchableOpacity>
+        
+        :null}
+        
+        {this.props.has_edit_button === true ? 
+          <TouchableOpacity
+          disabled={this.props.isDisabled}
+          activeOpacity={0.7}
+          onPress={()=>{
+            createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
+            this.props.navigation.goBack()
+          }}
+          style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
+            <View>
+              <Text style={header_style.saveButtonText}>Edit</Text>
             </View>
           </TouchableOpacity>
         

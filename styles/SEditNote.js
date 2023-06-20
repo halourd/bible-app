@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         fontSize:16,
         height: '100%',
-        lineHeight: 1.5
+        lineHeight: 24
         
     }
     

@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
 
   //style for contentContainerStyle prop
   containerStyle: {
-    flex: 1,
     paddingTop: 7.5,
     paddingBottom: 80,
   },

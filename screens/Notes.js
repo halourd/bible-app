@@ -31,9 +31,10 @@ export default class Notes extends Component {
     };
   }
 
-  async componentDidMount() {
 
+  async componentDidMount() {
     this.refreshNoteList();
+    this.interval = setInterval(this.refreshNoteList, 500);
   }
 
   refreshNoteList = async () => {
@@ -54,7 +55,7 @@ export default class Notes extends Component {
   showToast = (msg) => {
     ToastAndroid.showWithGravityAndOffset(
       msg,
-      ToastAndroid.LONG,
+      ToastAndroid.SHORT,
       ToastAndroid.TOP,
       0,
       90
@@ -121,7 +122,9 @@ export default class Notes extends Component {
                         .then(this.refreshNoteList);
                     }}
                     on_click={() => {
-                      this.props.navigation.navigate('Manage Note', {headerTitle: note.fileName.split('_')[0].toString()})
+                      this.props.navigation.navigate('Edit Note', {
+                        headerTitle: note.fileName.split('_')[0].toString(),
+                      })
 
                     }}
                   />
@@ -134,7 +137,7 @@ export default class Notes extends Component {
           activeOpacity={0.7}
           style={styles.addNoteButtonContainer}
           onPressOut={() => {
-            this.props.navigation.navigate('Manage Note', {headerTitle: "Add Note", resetField: true})
+            this.props.navigation.navigate('Add Note', {headerTitle: "Add Note", titleField: '', contentField: ''})
           }}
           >
             <View style={{paddingHorizontal: 10}}>

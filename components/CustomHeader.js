@@ -19,7 +19,8 @@ export default class CustomHeader extends Component {
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate(`${this.props.go_to_page}`);
+              this.props.navigation.navigate(`${this.props.go_to_page}`)
+              this.props.on_back()
             }}
           >
             <View style={header_style.backButtonContainer}>
@@ -58,8 +59,7 @@ export default class CustomHeader extends Component {
           disabled={this.props.isDisabled}
           activeOpacity={0.7}
           onPress={()=>{
-            createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
-            this.props.navigation.goBack()
+            this.props.on_click_edit()
           }}
           style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
             <View>

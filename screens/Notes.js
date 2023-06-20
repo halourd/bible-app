@@ -124,9 +124,12 @@ export default class Notes extends Component {
                     on_click={() => {
                       this.props.navigation.navigate('Edit Note', {
                         headerTitle: note.fileName.split('_')[0].toString(),
+                        noteContent: note.content,
+                        noteTitle: note.fileName.split('_')[0].toString()
                       })
-
-                    }}
+                      console.log(`${note.fileName.split('_')[0].toString()} ${note.content}`)
+                    }
+                  }
                   />
                 );
               })}

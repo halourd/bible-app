@@ -16,14 +16,14 @@ export default class NoteBlock extends Component {
                     <View>
                         <View style={styles.notesContainer}>
                             <Text style={styles.notesTitle}>{this.props.note_title}</Text>
-                            <Text style={styles.notesDate}>12/13</Text>
+                            <Text style={styles.notesDate}>{this.props.note_modified_date}</Text>
                         </View>
                         <View style={styles.notesContainer1}>
                             <View 
-                            numberOfLines={3}
-                            ellipsizeMode="tail"
                             style={styles.verses}>
-                                <Text style={styles.noteverses}>{this.props.note_content}</Text>
+                                <Text 
+                                numberOfLines={4}
+                                style={styles.noteverses}>{this.props.note_content}</Text>
                             </View>
                         </View>
                     </View>

@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-import { View, KeyboardAvoidingView, Text, TouchableOpacity, Keyboard, Image, TextInput} from "react-native";
+import { View, KeyboardAvoidingView, ScrollView, ToastAndroid, Text, TouchableOpacity, Keyboard, Image, TextInput, TouchableNativeFeedbackBase} from "react-native";
 
 import CustomHeader from "../components/CustomHeader";
 import styles from '../styles/SEditNote'
@@ -22,10 +22,37 @@ export default class EditNote extends Component {
     }
   }
 
-  clearFieldsOnSave(){
-    if(this.props.route.params.resetFields == true){
-      this.setState({noteTitle: '', noteContent: ''})
+  componentDidMount(){
+    const { noteContent, noteTitle } = this.props.route.params;
+    this.setState({ noteContent, noteTitle, isEditable: true });
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps)
+    const { noteContent, noteTitle } = this.props.route.params;
+    if (prevProps.route.params.noteContent !== noteContent || prevProps.route.params.noteTitle !== noteTitle) {
+      this.setState({ noteContent, noteTitle });
     }
+  }
+
+  showToast = (msg) => {
+    ToastAndroid.showWithGravityAndOffset(
+      msg,
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM,
+      0,
+      100
+    );
+  };
+
+  toogleEditButton(){
+    this.setState((prevState) => ({
+      isEditable: !prevState.isEditable
+    }));
+
+    !this.state.isEditable==false?
+    this.showToast("You're now editing this note"):
+    this.showToast("Previewing")
   }
 
   render() {
@@ -36,28 +63,43 @@ export default class EditNote extends Component {
         <StatusBar style="auto" />
         <CustomHeader 
         go_to_page='Notes'
+        action_for_save_button="note-update"
         navigation={this.props.navigation} 
         isDisabled={this.state.save_button_disabled} 
         has_edit_button={true} 
         on_back={()=> {
-            this.setState({noteTitle: '', noteContent: ''})
-        }}
-        // header_title={this.props.route.params.headerTitle}
-        // pass_note_data={{title: this.state.noteTitle, content: this.state.noteContent}}
-        on_click_edit={()=> {
+            // this.setState({noteTitle: '', noteContent: ''})
             this.setState({isEditable: true})
+          }}
+        on_hardware_back={()=> {
+          this.setState({isEditable: false})
+        }}
+        pass_note_data={{title: this.state.noteTitle, content: this.state.noteContent}}
+        on_click_edit={()=> {
+          this.toogleEditButton()
+            // this.setState({isEditable: true})
+        }}
+        has_save_button={!this.state.isEditable}
+        on_save={()=>{
+
         }}
         />
         <View>  
-          <View style={styles.titleEditorContainer}>
+          <View 
+          style={[
+            styles.titleEditorContainer,
+            this.state.isEditable?
+            null:{backgroundColor: '#e8e8e8'}
+          ]}
+          >
             <TextInput
-            editable={this.state.isEditable}
+            editable={!this.state.isEditable}
             ref={this.firstTextInputRef}
             clearButtonMode="while-editing"
             returnKeyType="next"
-            value={noteTitle}
+            value={this.state.noteTitle}
             placeholder="Title"
-            cursorColor={'#203239'}
+            cursorColor={'#325FA9'}
             style={styles.titleEditor}
             onChangeText={(title)=> {
               this.setState({noteTitle: title}, ()=>{
@@ -75,21 +117,23 @@ export default class EditNote extends Component {
             />
           </View>
 
-          <View style={styles.noteEditingFieldContainer}>
+          <ScrollView style={styles.noteEditingFieldContainer}>
             <TextInput
               ref={this.secondTextInputRef}
-              value={noteContent}
-              editable={this.state.isEditable}
+              value={this.state.noteContent}
+              editable={!this.state.isEditable}
+              aria-disabled={true}
               scrollEnabled={true}
               textAlignVertical="top"
               multiline={true}
-              cursorColor={'#203239'}
+              numberOfLines={25}
+              cursorColor={'#325FA9'}
               onChangeText={(content)=> {
                 this.setState({noteContent: content})
               }}
               style={styles.noteEditingField}
               />
-          </View>
+          </ScrollView>
         </View>
       </KeyboardAvoidingView>
     );

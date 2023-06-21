@@ -10,9 +10,13 @@ const readNotes = async () => {
         const noteContent = await FileSystem.readAsStringAsync(notePath);
         
         const fileInfo = await FileSystem.getInfoAsync(notePath);
-        const creationDate = fileInfo.creationTime;
+        const dateModified = fileInfo.modificationTime;
+
+        const date = new Date(dateModified*1000);
+        console.log(date)
+        const fileFormattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear().toString().substr(-2)}`;
       
-        return { fileName, content: noteContent };
+        return { fileName, content: noteContent, fileFormattedDate };
       })
     );
     

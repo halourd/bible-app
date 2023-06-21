@@ -12,6 +12,11 @@ export default class CustomHeader extends Component {
     createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
     this.props.navigation.navigate(this.props.go_to_page)
   }
+  
+  updateNote(){
+    alert('Updated!')
+    createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
+  }
 
   render() {
     return (
@@ -19,8 +24,8 @@ export default class CustomHeader extends Component {
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate(`${this.props.go_to_page}`)
               this.props.on_back()
+              this.props.navigation.navigate(`${this.props.go_to_page}`)
             }}
           >
             <View style={header_style.backButtonContainer}>
@@ -36,38 +41,61 @@ export default class CustomHeader extends Component {
           </View>
         </View>
 
+        <View style={header_style.actionButtonContainer}>
+          
+          {this.props.has_save_button === true &&
+          this.props.action_for_save_button=="note-update"
+          ? 
+            <TouchableOpacity
+            disabled={this.props.isDisabled}
+            activeOpacity={0.7}
+            onPress={()=> {
+              this.updateNote();
+              this.props.on_save();
+            }}
 
-        {this.props.has_save_button === true ? 
-          <TouchableOpacity
-          disabled={this.props.isDisabled}
-          activeOpacity={0.7}
-          onPress={()=> {
-            this.createNewNote();
-            this.props.on_save();
-          }}
+            style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
+              <View>
+                <Text style={header_style.saveButtonText}>Save</Text>
+              </View>
+            </TouchableOpacity>
+          
+          :null}
 
-          style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
-            <View>
-              <Text style={header_style.saveButtonText}>Save</Text>
-            </View>
-          </TouchableOpacity>
-        
-        :null}
-        
-        {this.props.has_edit_button === true ? 
-          <TouchableOpacity
-          disabled={this.props.isDisabled}
-          activeOpacity={0.7}
-          onPress={()=>{
-            this.props.on_click_edit()
-          }}
-          style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
-            <View>
-              <Text style={header_style.saveButtonText}>Edit</Text>
-            </View>
-          </TouchableOpacity>
-        
-        :null}
+          {this.props.has_save_button === true &&
+          this.props.action_for_save_button=="note-create"
+          ? 
+            <TouchableOpacity
+            disabled={this.props.isDisabled}
+            activeOpacity={0.7}
+            onPress={()=> {
+              this.createNewNote();
+              this.props.on_save();
+            }}
+
+            style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
+              <View>
+                <Text style={header_style.saveButtonText}>Save</Text>
+              </View>
+            </TouchableOpacity>
+          
+          :null}
+          
+          {this.props.has_edit_button === true ? 
+            <TouchableOpacity
+            disabled={this.props.isDisabled}
+            activeOpacity={0.7}
+            onPress={()=>{
+              this.props.on_click_edit()
+            }}
+            style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
+              <View>
+                <Text style={header_style.saveButtonText}>Edit</Text>
+              </View>
+            </TouchableOpacity>
+          
+          :null}
+        </View>
 
       </View>
     );

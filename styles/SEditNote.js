@@ -7,20 +7,20 @@ const styles = StyleSheet.create({
     },
     
     titleEditorContainer:{
-        backgroundColor: '#e8e8e8',
         marginHorizontal:20,
-        borderRadius: 10
+        borderRadius: 10,
+        backgroundColor: '#e8e8e8',
     },
 
     titleEditor: {
         paddingHorizontal: 20,
         paddingVertical: 12,
         fontSize:21,
-        fontFamily: 'ProductSans-Regular'
+        fontFamily: 'ProductSans-Bold',
+        color: 'black'
     },
     
     noteEditingFieldContainer: {
-        // backgroundColor: '#e8e8e8',
         marginTop: 10,
         marginHorizontal:20,
         borderRadius: 10,
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         fontSize:16,
         height: '100%',
-        lineHeight: 24
+        lineHeight: 24,
+        color: 'black'
         
     }
     

@@ -20,6 +20,7 @@ const SNavBar = StyleSheet.create({
         bottom: 0,
         alignSelf: 'center',
     },
+
     buttonContainer: {
        paddingHorizontal: 16,
        paddingVertical: 12,

@@ -10,6 +10,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
+    actionButtonContainer: {
+        flexDirection: 'row',
+        paddingRight: 20
+    },
+
     backButtonContainer: {
         justifyContent: 'center',
         // borderWidth: 1,
@@ -38,7 +43,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 20,
         paddingVertical: 10,
-        marginRight: 20,
+        marginRight: 10,
 
         shadowColor: "grey",
         shadowOffset: {
@@ -58,7 +63,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 20,
         paddingVertical: 10,
-        marginRight: 20,
+        // marginRight: 10,
 
         shadowColor: "grey",
         shadowOffset: {

@@ -13,6 +13,7 @@ import NavigationBar from "../components/NavigationBar";
 import NoteBlock from "../components/notes/NoteBlock";
 import styles from "../styles/SNotes";
 import { ScrollView } from "react-native-gesture-handler";
+import uuid from 'react-native-uuid'
 
 import {
   readNotes,
@@ -34,12 +35,20 @@ export default class Notes extends Component {
 
   async componentDidMount() {
     this.refreshNoteList();
-    this.interval = setInterval(this.refreshNoteList, 500);
+    // this.interval = setInterval(this.refreshNoteList, 500);
   }
 
   refreshNoteList = async () => {
     const notes = await readNotes();
-    this.setState({ noteList: notes });
+
+    const sortedNotes = notes.sort((a, b)=> {
+      const dateA = new Date(a.creationDate);
+      const dateB = new Date(b.creationDate);
+      return dateB - dateA;
+    })
+    this.setState({ noteList: sortedNotes }, ()=>{
+      console.log(this.state.noteList)
+    });
 
   };
 
@@ -112,13 +121,14 @@ export default class Notes extends Component {
               {this.state.noteList.map((note) => {
                 return (
                   <NoteBlock
-                    key={note.fileName}
+                    key={`${note.fileName}_${uuid.v4()}`}
                     note_title={note.fileName.split('_')[0].toString()}
                     note_content={note.content}
+                    note_modified_date={note.fileFormattedDate}
                     navigation={this.props.navigation}
                     on_long_press={()=> {
                       deleteNotes(note.fileName)
-                        .then(this.showToast(`${note.fileName.split('_')[0].toString()} deleted`))
+                        .then(this.showToast(`"${note.fileName.split('_')[0].toString()}" deleted`))
                         .then(this.refreshNoteList);
                     }}
                     on_click={() => {
@@ -127,7 +137,7 @@ export default class Notes extends Component {
                         noteContent: note.content,
                         noteTitle: note.fileName.split('_')[0].toString()
                       })
-                      console.log(`${note.fileName.split('_')[0].toString()} ${note.content}`)
+                      // console.log(`${note.fileName.split('_')[0].toString()} ${note.content}`)
                     }
                   }
                   />

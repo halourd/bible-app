@@ -40,6 +40,7 @@ export default class AddNote extends Component {
         <StatusBar style="auto" />
         <CustomHeader 
         go_to_page='Notes'
+        action_for_save_button="note-create"
         navigation={this.props.navigation} 
         isDisabled={this.state.save_button_disabled} 
         has_save_button={true} 
@@ -48,6 +49,9 @@ export default class AddNote extends Component {
         on_save={()=> {
           this.setState({noteContent: '', noteTitle: '', save_button_disabled: true})
         }}
+        on_back={()=> {
+          this.setState({noteTitle: '', noteContent: ''})
+      }}
         />
         <View>  
           <View style={styles.titleEditorContainer}>

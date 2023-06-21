@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import header_style from "../styles/component/SHeader";
 
 //for NOTE CRUD
-import { readNotes, createNote } from "../helper/file-system/note-fs";
+import { readNotes, createNote, updateNote } from "../helper/file-system/note-fs";
 
 export default class CustomHeader extends Component {
 
@@ -13,9 +13,8 @@ export default class CustomHeader extends Component {
     this.props.navigation.navigate(this.props.go_to_page)
   }
   
-  updateNote(){
-    alert('Updated!')
-    createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
+  updateThisNote(){
+    updateNote(this.props.pass_note_data.old_note_filename, this.props.pass_note_data.title, this.props.pass_note_data.content)
   }
 
   render() {
@@ -50,7 +49,7 @@ export default class CustomHeader extends Component {
             disabled={this.props.isDisabled}
             activeOpacity={0.7}
             onPress={()=> {
-              this.updateNote();
+              this.updateThisNote();
               this.props.on_save();
             }}
 

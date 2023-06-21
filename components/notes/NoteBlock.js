@@ -15,7 +15,9 @@ export default class NoteBlock extends Component {
                     style={styles.headerNotes}>
                     <View>
                         <View style={styles.notesContainer}>
-                            <Text style={styles.notesTitle}>{this.props.note_title}</Text>
+                            <Text 
+                            numberOfLines={1}
+                            style={styles.notesTitle}>{this.props.note_title}</Text>
                             <Text style={styles.notesDate}>{this.props.note_modified_date}</Text>
                         </View>
                         <View style={styles.notesContainer1}>

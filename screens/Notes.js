@@ -35,7 +35,11 @@ export default class Notes extends Component {
 
   async componentDidMount() {
     this.refreshNoteList();
-    // this.interval = setInterval(this.refreshNoteList, 500);
+    this.interval = setInterval(this.refreshNoteList, 1000);
+  }
+
+  componentWillUnmount(){
+    this.interval = clearInterval()
   }
 
   refreshNoteList = async () => {
@@ -46,9 +50,7 @@ export default class Notes extends Component {
       const dateB = new Date(b.creationDate);
       return dateB - dateA;
     })
-    this.setState({ noteList: sortedNotes }, ()=>{
-      console.log(this.state.noteList)
-    });
+    this.setState({ noteList: sortedNotes });
 
   };
 
@@ -62,12 +64,10 @@ export default class Notes extends Component {
   };
 
   showToast = (msg) => {
-    ToastAndroid.showWithGravityAndOffset(
+    ToastAndroid.show(
       msg,
       ToastAndroid.SHORT,
-      ToastAndroid.TOP,
-      0,
-      90
+      ToastAndroid.BOTTOM,
     );
   };
 
@@ -133,9 +133,10 @@ export default class Notes extends Component {
                     }}
                     on_click={() => {
                       this.props.navigation.navigate('Edit Note', {
-                        headerTitle: note.fileName.split('_')[0].toString(),
                         noteContent: note.content,
-                        noteTitle: note.fileName.split('_')[0].toString()
+                        noteTitle: note.fileName.split('_')[0].toString(),
+                        note_filename: note.fileName
+
                       })
                       // console.log(`${note.fileName.split('_')[0].toString()} ${note.content}`)
                     }

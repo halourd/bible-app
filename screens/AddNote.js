@@ -55,7 +55,6 @@ export default class AddNote extends Component {
         />
         <View>  
           <View style={styles.titleEditorContainer}>
-            {console.log(this.state.noteTitle)}
             <TextInput
             ref={this.firstTextInputRef}
             clearButtonMode="while-editing"
@@ -67,9 +66,7 @@ export default class AddNote extends Component {
             onChangeText={(title)=> {
               this.setState({noteTitle: title}, ()=>{
                 this.state.noteTitle.length >= 0 ?
-                  this.setState({save_button_disabled: false}, ()=> {
-
-                  })
+                  this.setState({save_button_disabled: false})
                   :
                   this.setState({save_button_disabled: true})
               })

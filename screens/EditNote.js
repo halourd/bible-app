@@ -28,7 +28,6 @@ export default class EditNote extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps)
     const { noteContent, noteTitle } = this.props.route.params;
     if (prevProps.route.params.noteContent !== noteContent || prevProps.route.params.noteTitle !== noteTitle) {
       this.setState({ noteContent, noteTitle });
@@ -45,19 +44,19 @@ export default class EditNote extends Component {
     );
   };
 
-  toogleEditButton(){
+  toogleEditButton(toast_msg){
     this.setState((prevState) => ({
       isEditable: !prevState.isEditable
     }));
 
     !this.state.isEditable==false?
     this.showToast("You're now editing this note"):
-    this.showToast("Previewing")
+    this.showToast(toast_msg)
   }
 
   render() {
+    const {note_filename} = this.props.route.params;
 
-    const {noteContent, noteTitle} = this.props.route.params;
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <StatusBar style="auto" />
@@ -65,6 +64,7 @@ export default class EditNote extends Component {
         go_to_page='Notes'
         action_for_save_button="note-update"
         navigation={this.props.navigation} 
+
         isDisabled={this.state.save_button_disabled} 
         has_edit_button={true} 
         on_back={()=> {
@@ -74,14 +74,14 @@ export default class EditNote extends Component {
         on_hardware_back={()=> {
           this.setState({isEditable: false})
         }}
-        pass_note_data={{title: this.state.noteTitle, content: this.state.noteContent}}
+        pass_note_data={{old_note_filename: note_filename, title: this.state.noteTitle, content: this.state.noteContent}}
         on_click_edit={()=> {
-          this.toogleEditButton()
+          this.toogleEditButton("Previewing")
             // this.setState({isEditable: true})
         }}
         has_save_button={!this.state.isEditable}
         on_save={()=>{
-
+          this.toogleEditButton('Changes Saved')
         }}
         />
         <View>  
@@ -89,7 +89,7 @@ export default class EditNote extends Component {
           style={[
             styles.titleEditorContainer,
             this.state.isEditable?
-            null:{backgroundColor: '#e8e8e8'}
+            {backgroundColor: 'rgba(0.5, 0, 0, 0)'}:{backgroundColor: '#e7e7e7'}
           ]}
           >
             <TextInput

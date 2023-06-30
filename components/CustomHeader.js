@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
-
+import {getStorage, setStorage} from '../helper/storage/async-storage'
 import header_style from "../styles/component/SHeader";
 
 //for NOTE CRUD
@@ -10,11 +10,14 @@ export default class CustomHeader extends Component {
 
   createNewNote(){
     createNote(this.props.pass_note_data.title, this.props.pass_note_data.content)
-    this.props.navigation.navigate(this.props.go_to_page)
+    this.props.navigation.navigate(this.props.go_to_page, {has_new_note: true})
   }
   
   updateThisNote(){
     updateThisNote(this.props.pass_note_data.old_note_filename, this.props.pass_note_data.title, this.props.pass_note_data.content)
+    .then(async (new_path)=>{
+      await setStorage('newfilename_for_updated_note', new_path)
+    })
   }
 
   render() {
@@ -24,7 +27,7 @@ export default class CustomHeader extends Component {
           <TouchableOpacity
             onPress={() => {
               this.props.on_back()
-              this.props.navigation.navigate(`${this.props.go_to_page}`)
+              this.props.navigation.navigate(`${this.props.go_to_page}`, {has_new_note: true})
             }}
           >
             <View style={header_style.backButtonContainer}>

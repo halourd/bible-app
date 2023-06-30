@@ -71,11 +71,11 @@ export default class Sync extends Component {
         {/* Sync from other device */}
         <View style={sync_style.container1}>
           <View style={sync_style.subContainer1}>
-            <Image source={require("../assets/pngs/sync_block1.png")} style={sync_style.subContainer2Image} />
+            <Image source={require("../assets/pngs/sync_block2.png")} style={ sync_style.subContainer1Image} />
           </View>
 
           <View style={sync_style.subContainer2}>
-            <Text style={sync_style.syncLabel}>Sync from other Device</Text>
+            <Text style={sync_style.syncLabel}>Share your notes to other</Text>
             <TextInput
               onChangeText={(text) => {
                 this.setState({ syncingCode: text }, ()=> {
@@ -84,7 +84,7 @@ export default class Sync extends Component {
                     this.setState({isSyncButtonDisabled: false})
                   console.log(this.state.syncingCode)
                 })
-
+                
               }}
               maxLength={6}
               keyboardType="Numeric"
@@ -104,10 +104,10 @@ export default class Sync extends Component {
                 alert('Please input shared code')
                 return
               }
-              
-              send_request(this.state.syncingCode,
-                 ToastAndroid.show('Notes Successfully transferred', ToastAndroid.SHORT)
-                )
+              this.setState({isSyncButtonDisabled: true})
+              send_request(this.state.syncingCode, ()=>{
+                this.props.navigation.navigate('Notes')
+              })
             }}
             >
               <View style={sync_style.buttonImgContainer}>
@@ -127,12 +127,12 @@ export default class Sync extends Component {
         {/* Share your notes to others */}
           <View style={sync_style.container1}>
             <View style={sync_style.subContainer1}>
-              <Image source={require("../assets/pngs/sync_block2.png")} style={ sync_style.subContainer1Image} />
+            <Image source={require("../assets/pngs/sync_block1.png")} style={sync_style.subContainer2Image} />
             </View>
 
             <View style={sync_style.subContainer2}>
               <Text style={sync_style.syncLabel}>
-                Share your notes to others
+                Get notes from a User
             </Text>
             
             <View style={sync_style.codeInputBox2}>

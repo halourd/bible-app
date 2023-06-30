@@ -35,7 +35,8 @@ const processChunk = async (message) => {
         const join_chunks = receivedNoteChunks.join('')
         const note_object = JSON.parse(join_chunks)
 
-        for(let i=0; i <= note_object.length-1; i++){
+        for(let i=0; i <= note_object.length-1; i++){  
+            console.log(i)
             note_container.push(note_object[i])
         }
         // note_object.map((note) => {
@@ -44,7 +45,7 @@ const processChunk = async (message) => {
     }
 
     note_container.forEach(async (note) => {
-        const note_filename = note.fileName.split('_')[0].toString()
+        const note_filename = note.fileName.split('-_-_-')[0].toString()
         createNote(note_filename, note.content)
     })
 
@@ -97,23 +98,7 @@ export const send_request = async (code, callback) => {
                 console.log(result)
             }
         });
-
-        if(index==result.length-1){
-            console.log('[INDEX REACHED]')
-        }
     })
-    
-    // notes.forEach((note_object) => {
-    //     pubnub.publish({
-    //         channel: [code],
-    //         message: {
-    //             text: [{
-    //                 fileName: note_object.fileName,
-    //                 content: note_object.content
-    //             }]
-    //         },
-    //     });
-    // })
 
 }
 

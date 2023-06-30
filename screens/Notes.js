@@ -35,7 +35,12 @@ export default class Notes extends Component {
 
   async componentDidMount() {
     this.refreshNoteList();
-    // this.interval = setInterval(this.refreshNoteList, 1000);
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.route.params !== this.props.route.params){
+      this.refreshNoteList();
+    }
   }
 
   componentWillUnmount(){
@@ -122,23 +127,22 @@ export default class Notes extends Component {
                 return (
                   <NoteBlock
                     key={`${note.fileName}_${uuid.v4()}`}
-                    note_title={note.fileName.split('_')[0].toString()}
+                    note_title={note.fileName.split('-_-_-')[0].toString()}
                     note_content={note.content}
                     note_modified_date={note.fileFormattedDate}
                     navigation={this.props.navigation}
                     on_long_press={()=> {
                       deleteNotes(note.fileName)
-                        .then(this.showToast(`"${note.fileName.split('_')[0].toString()}" deleted`))
+                        .then(this.showToast(`"${note.fileName.split('-_-_-')[0].toString()}" deleted`))
                         .then(this.refreshNoteList);
                     }}
                     on_click={() => {
                       this.props.navigation.navigate('Edit Note', {
                         noteContent: note.content,
-                        noteTitle: note.fileName.split('_')[0].toString(),
+                        noteTitle: note.fileName.split('-_-_-')[0].toString(),
                         note_filename: note.fileName
 
                       })
-                      // console.log(`${note.fileName.split('_')[0].toString()} ${note.content}`)
                     }
                   }
                   />

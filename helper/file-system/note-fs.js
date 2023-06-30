@@ -3,7 +3,7 @@ import * as FileSystem from "expo-file-system";
 const createNote = async (note_title, note_content, callback) => {
   const noteContent = note_content.trim();
   const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
-  const noteFileName = `${note_title}_${Date.now()}.txt`;
+  const noteFileName = `${note_title}-_-_-${Date.now()}.txt`;
   const notePath = notesDirectory + noteFileName;
 
   await FileSystem.makeDirectoryAsync(notesDirectory, { intermediates: true });
@@ -14,7 +14,6 @@ const createNote = async (note_title, note_content, callback) => {
 };
 
 const readNotes = async () => {
-  console.log("Reading notes...");
   const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
   // await FileSystem.deleteAsync(notesDirectory)
   await FileSystem.makeDirectoryAsync(notesDirectory, { intermediates: true });
@@ -57,7 +56,7 @@ const readNotes = async () => {
 const updateNote = async (oldFilePath, fileName, newContent) => {
   const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
   const oldNotePath = notesDirectory + oldFilePath
-  const newNotePath = notesDirectory + `${fileName}_${Date.now()}.txt`;
+  const newNotePath = notesDirectory + `${fileName}-_-_-${Date.now()}.txt`;
 
   await FileSystem.writeAsStringAsync(newNotePath, newContent);
 
@@ -77,10 +76,11 @@ const updateThisNote = async (oldFileName, newFileName, newContent, callback) =>
   try {
     const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
     const oldNoteFilePath = notesDirectory + oldFileName;
-  
+    
+    const new_filename = `${newFileName}-_-_-${Date.now()}.txt`
     // await FileSystem.writeAsStringAsync(notePath, newContent);
   
-    const newFilePath = `${FileSystem.documentDirectory}notes/my/` + `${newFileName}_${Date.now()}.txt`;
+    const newFilePath = `${FileSystem.documentDirectory}notes/my/` + new_filename;
 
     //Check if the note is existing 
     // const fileInfo = await FileSystem.getInfoAsync(oldFilePath);
@@ -99,6 +99,8 @@ const updateThisNote = async (oldFileName, newFileName, newContent, callback) =>
     await FileSystem.deleteAsync(oldNoteFilePath);
     
     console.log(`Note updated successfully!`);
+    return new_filename;
+
   } catch (error) {
     console.log(error)
   }

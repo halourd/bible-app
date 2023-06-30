@@ -5,7 +5,7 @@ import { View, KeyboardAvoidingView, ScrollView, ToastAndroid, Text, TouchableOp
 import CustomHeader from "../components/CustomHeader";
 import styles from '../styles/SEditNote'
 
-import { readNotes, createNote } from "../helper/file-system/note-fs";
+import { getStorage } from "../helper/storage/async-storage";
 
 export default class EditNote extends Component {
   constructor(props){
@@ -17,14 +17,15 @@ export default class EditNote extends Component {
     this.state = {
       noteTitle:"",
       noteContent: "",
+      oldFileName: "",
       edit_button_disabled: true,
       isEditable: false
     }
   }
 
   componentDidMount(){
-    const { noteContent, noteTitle } = this.props.route.params;
-    this.setState({ noteContent, noteTitle, isEditable: true });
+    const { noteContent, noteTitle, note_filename } = this.props.route.params;
+    this.setState({ noteContent, noteTitle, oldFileName: note_filename, isEditable: true });
   }
 
   componentDidUpdate(prevProps) {
@@ -55,7 +56,7 @@ export default class EditNote extends Component {
   }
 
   render() {
-    const {note_filename} = this.props.route.params;
+    const {oldFileName} = this.state
 
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -68,20 +69,25 @@ export default class EditNote extends Component {
         isDisabled={this.state.save_button_disabled} 
         has_edit_button={true} 
         on_back={()=> {
-            // this.setState({noteTitle: '', noteContent: ''})
             this.setState({isEditable: true})
           }}
         on_hardware_back={()=> {
           this.setState({isEditable: false})
         }}
-        pass_note_data={{old_note_filename: note_filename, title: this.state.noteTitle, content: this.state.noteContent}}
-        on_click_edit={()=> {
+        pass_note_data={{old_note_filename: oldFileName, title: this.state.noteTitle, content: this.state.noteContent}}
+        on_click_edit={async ()=> {
+          this.setState({oldFileName: await getStorage('newfilename_for_updated_note')}, ()=>{
+            console.log('[LINE 86]',this.state.oldFileName)
+          })
           this.toogleEditButton("Previewing")
-            // this.setState({isEditable: true})
         }}
         has_save_button={!this.state.isEditable}
-        on_save={()=>{
+        on_save={async ()=>{
+          this.setState({oldFileName: await getStorage('newfilename_for_updated_note')}, ()=>{
+            console.log('[LINE 94]',this.state.oldFileName)
+          })
           this.toogleEditButton('Changes Saved')
+          
         }}
         />
         <View>  

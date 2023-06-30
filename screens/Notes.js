@@ -35,7 +35,7 @@ export default class Notes extends Component {
 
   async componentDidMount() {
     this.refreshNoteList();
-    this.interval = setInterval(this.refreshNoteList, 1000);
+    // this.interval = setInterval(this.refreshNoteList, 1000);
   }
 
   componentWillUnmount(){

@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import header_style from "../styles/component/SHeader";
 
 //for NOTE CRUD
-import { readNotes, createNote, updateNote } from "../helper/file-system/note-fs";
+import { readNotes, createNote, updateThisNote } from "../helper/file-system/note-fs";
 
 export default class CustomHeader extends Component {
 
@@ -14,7 +14,7 @@ export default class CustomHeader extends Component {
   }
   
   updateThisNote(){
-    updateNote(this.props.pass_note_data.old_note_filename, this.props.pass_note_data.title, this.props.pass_note_data.content)
+    updateThisNote(this.props.pass_note_data.old_note_filename, this.props.pass_note_data.title, this.props.pass_note_data.content)
   }
 
   render() {

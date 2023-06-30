@@ -2,8 +2,13 @@ import PubNub from "pubnub";
 import uuid from "react-native-uuid";
 // import {PubNubProvider} from "pubnub-react";
 
+import {readNotes, createNote} from '../file-system/note-fs'
+
 //import request validator
 import HandleNoteTransfer from '../data-handling/content-transfer';
+
+//Store all Notes in an array
+
 
 const pubnub = new PubNub({
     publishKey: "pub-c-5afbc200-ee65-45fd-88a0-f6a9a0ef3d1f",
@@ -20,13 +25,41 @@ export const generate_code = (() => {
     return code;
 })
 
+const processChunk = async (message) => {
+    const receivedNoteChunks = [];
+    let note_container = []
+
+    receivedNoteChunks[message.index] = message.content;
+
+    if(receivedNoteChunks.length==message.totalChunks){
+        const join_chunks = receivedNoteChunks.join('')
+        const note_object = JSON.parse(join_chunks)
+
+        for(let i=0; i <= note_object.length-1; i++){
+            note_container.push(note_object[i])
+        }
+        // note_object.map((note) => {
+        //     note_container.push(note_object)
+        // });
+    }
+
+    note_container.forEach(async (note) => {
+        const note_filename = note.fileName.split('_')[0].toString()
+        createNote(note_filename, note.content)
+    })
+
+    console.log('===>',note_container)
+
+}
 
 //Listen for incoming copy request
 export const listen_for_copy = (code) => {
+
     pubnub.addListener({
         message: (event) => {
-            alert(`[RECEIVED] ${event.message.text}`)
             // console.log('[RECEIVED]',event.message);
+            processChunk(event.message)
+
         },
     });
     pubnub.subscribe({
@@ -42,13 +75,45 @@ export const listen_for_copy = (code) => {
     - Use imported HandleNoteTransfer to handle note copy request
     ==============================================================
 */
-export const send_request = (code) => {
-    pubnub.publish({
-        channel: [code],
-        message: {
-            text: `[${code}] Message received.`,
-        },
-    });
+
+export const send_request = async (code, callback) => {
+    const notes = JSON.stringify(await readNotes()); //output: array of note objects
+
+    const result = notes.match(/.{1,31000}/g) ?? []; //split data into chunks of 31000 characters
+
+    //send each chunk of data
+    result.map((chunk, index) => {
+        pubnub.publish({
+            channel: [code],
+            message: {
+                index: index,
+                content: chunk,
+                totalChunks: result.length,
+            },
+        }, (result, error)=> {
+            if(error){
+                console.log(error)
+            }else {
+                console.log(result)
+            }
+        });
+
+        if(index==result.length-1){
+            console.log('[INDEX REACHED]')
+        }
+    })
+    
+    // notes.forEach((note_object) => {
+    //     pubnub.publish({
+    //         channel: [code],
+    //         message: {
+    //             text: [{
+    //                 fileName: note_object.fileName,
+    //                 content: note_object.content
+    //             }]
+    //         },
+    //     });
+    // })
 
 }
 

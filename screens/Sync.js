@@ -105,7 +105,9 @@ export default class Sync extends Component {
                 return
               }
               
-              send_request(this.state.syncingCode)
+              send_request(this.state.syncingCode,
+                 ToastAndroid.show('Notes Successfully transferred', ToastAndroid.SHORT)
+                )
             }}
             >
               <View style={sync_style.buttonImgContainer}>

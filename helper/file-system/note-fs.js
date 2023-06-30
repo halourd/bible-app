@@ -2,7 +2,7 @@ import * as FileSystem from "expo-file-system";
 
 const createNote = async (note_title, note_content, callback) => {
   const noteContent = note_content.trim();
-  const notesDirectory = `${FileSystem.documentDirectory}notes/`;
+  const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
   const noteFileName = `${note_title}_${Date.now()}.txt`;
   const notePath = notesDirectory + noteFileName;
 
@@ -15,12 +15,13 @@ const createNote = async (note_title, note_content, callback) => {
 
 const readNotes = async () => {
   console.log("Reading notes...");
-  const notesDirectory = `${FileSystem.documentDirectory}notes/`;
+  const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
+  // await FileSystem.deleteAsync(notesDirectory)
   await FileSystem.makeDirectoryAsync(notesDirectory, { intermediates: true });
 
-  if((`${FileSystem.documentDirectory}notes/`)){
+  if((`${FileSystem.documentDirectory}notes/my/`)){  
     try {
-      const notesDirectory = `${FileSystem.documentDirectory}notes/`;
+      const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
       const noteFileNames = await FileSystem.readDirectoryAsync(notesDirectory);
       
       const notes = await Promise.all(
@@ -40,10 +41,11 @@ const readNotes = async () => {
             return { fileName, content: noteContent, fileFormattedDate };
           })
           );
+          
           return notes;
         } catch (error) {
           console.log(error)
-          alert("Create Note")
+          alert("My Notes Directory not found. Create a note first.")
         }
   }else{
     await FileSystem.makeDirectoryAsync(notesDirectory, { intermediates: true });
@@ -53,7 +55,7 @@ const readNotes = async () => {
 };
 
 const updateNote = async (oldFilePath, fileName, newContent) => {
-  const notesDirectory = `${FileSystem.documentDirectory}notes/`;
+  const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
   const oldNotePath = notesDirectory + oldFilePath
   const newNotePath = notesDirectory + `${fileName}_${Date.now()}.txt`;
 
@@ -73,12 +75,12 @@ const updateNote = async (oldFilePath, fileName, newContent) => {
 
 const updateThisNote = async (oldFileName, newFileName, newContent, callback) => {
   try {
-    const notesDirectory = `${FileSystem.documentDirectory}notes/`;
+    const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
     const oldNoteFilePath = notesDirectory + oldFileName;
   
     // await FileSystem.writeAsStringAsync(notePath, newContent);
   
-    const newFilePath = `${FileSystem.documentDirectory}notes/` + `${newFileName}_${Date.now()}.txt`;
+    const newFilePath = `${FileSystem.documentDirectory}notes/my/` + `${newFileName}_${Date.now()}.txt`;
 
     //Check if the note is existing 
     // const fileInfo = await FileSystem.getInfoAsync(oldFilePath);
@@ -88,7 +90,7 @@ const updateThisNote = async (oldFileName, newFileName, newContent, callback) =>
     // }
     
     // Read the old note content
-    const oldContent = await FileSystem.readAsStringAsync(oldFilePath);
+    const oldContent = await FileSystem.readAsStringAsync(oldNoteFilePath);
     
     // Write the new content to the new note's file path
     await FileSystem.writeAsStringAsync(newFilePath, newContent);
@@ -104,7 +106,7 @@ const updateThisNote = async (oldFileName, newFileName, newContent, callback) =>
 };
 
 const deleteNotes = async (fileName, callback) => {
-  const notesDirectory = `${FileSystem.documentDirectory}notes/`;
+  const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
   const notePath = notesDirectory + fileName;
 
   await FileSystem.deleteAsync(notePath, { idempotent: true });

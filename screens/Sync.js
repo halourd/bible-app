@@ -78,11 +78,18 @@ export default class Sync extends Component {
             <Text style={sync_style.syncLabel}>Share your notes to other</Text>
             <TextInput
               onChangeText={(text) => {
-                this.setState({ syncingCode: text }, ()=> {
-                  this.state.syncingCode.length != 6?
-                    this.setState({isSyncButtonDisabled: true}):
-                    this.setState({isSyncButtonDisabled: false})
-                  console.log(this.state.syncingCode)
+                this.setState({ senderCode: text }, ()=> {
+                  if(this.state.senderCode.length==6){
+                    if(this.state.senderCode==this.state.code){
+                      this.setState({isSyncButtonDisabled: true})
+                    }else{
+                      this.setState({isSyncButtonDisabled: false})
+                    }
+                  }else{
+                    this.setState({isSyncButtonDisabled: true})
+                  }
+
+                  console.log(this.state.senderCode)
                 })
                 
               }}

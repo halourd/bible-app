@@ -35,10 +35,11 @@ const processChunk = async (message) => {
         const join_chunks = receivedNoteChunks.join('')
         const note_object = JSON.parse(join_chunks)
 
-        for(let i=0; i <= note_object.length-1; i++){  
-            console.log(i)
-            note_container.push(note_object[i])
-        }
+        console.log(note_object.length)
+        note_object.forEach((note, index) => {
+            note_container.push(note_object[index])
+        });
+
         // note_object.map((note) => {
         //     note_container.push(note_object)
         // });

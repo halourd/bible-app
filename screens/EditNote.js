@@ -25,7 +25,8 @@ export default class EditNote extends Component {
 
   componentDidMount(){
     const { noteContent, noteTitle, note_filename } = this.props.route.params;
-    this.setState({ noteContent, noteTitle, oldFileName: note_filename, isEditable: true });
+    console.log('[===>>]',this.props.route.params)
+    this.setState({ noteContent, noteTitle, note_filename, isEditable: true });
   }
 
   componentDidUpdate(prevProps) {
@@ -56,6 +57,7 @@ export default class EditNote extends Component {
   }
 
   render() {
+    const old_filename = this.props.route.params.note_filename
     const {oldFileName} = this.state
 
     return (
@@ -74,10 +76,10 @@ export default class EditNote extends Component {
         on_hardware_back={()=> {
           this.setState({isEditable: false})
         }}
-        pass_note_data={{old_note_filename: oldFileName, title: this.state.noteTitle, content: this.state.noteContent}}
+        pass_note_data={{old_note_filename: old_filename, title: this.state.noteTitle, content: this.state.noteContent}}
         on_click_edit={async ()=> {
-          this.setState({oldFileName: await getStorage('newfilename_for_updated_note')}, ()=>{
-            console.log('[LINE 86]',this.state.oldFileName)
+          this.setState({oldFileName: old_filename}, ()=>{
+            console.log('[LINE 82]',this.state.oldFileName)
           })
           this.toogleEditButton("Previewing")
         }}
@@ -86,6 +88,7 @@ export default class EditNote extends Component {
           this.setState({oldFileName: await getStorage('newfilename_for_updated_note')}, ()=>{
             console.log('[LINE 94]',this.state.oldFileName)
           })
+          this.props.navigation.navigate('Notes', {has_note_updated: true})
           this.toogleEditButton('Changes Saved')
           
         }}

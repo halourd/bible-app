@@ -33,6 +33,12 @@ export default class Sync extends Component {
     listen_for_copy(this.state.code);
   }
 
+  componentDidUpdate(prevProps){
+    if(prevProps.route.params !== this.props.route.params){
+      
+    }
+  }
+
   componentWillUnmount() {
     remove_listener(this.state.code)
   }
@@ -49,6 +55,7 @@ export default class Sync extends Component {
 
 
   render() {
+    
     return (
       <View style={sync_style.mainContainer}>
         {/* Header Title */}
@@ -56,6 +63,7 @@ export default class Sync extends Component {
           
           <TouchableOpacity
             onPress={() => { 
+              remove_listener(this.state.code)
               this.props.navigation.navigate('Notes')
             }}
           >
@@ -78,9 +86,9 @@ export default class Sync extends Component {
             <Text style={sync_style.syncLabel}>Share your notes to other</Text>
             <TextInput
               onChangeText={(text) => {
-                this.setState({ senderCode: text }, ()=> {
-                  if(this.state.senderCode.length==6){
-                    if(this.state.senderCode==this.state.code){
+                this.setState({ syncingCode: text }, ()=> {
+                  if(this.state.syncingCode.length==6){
+                    if(this.state.syncingCode==this.state.code){
                       this.setState({isSyncButtonDisabled: true})
                     }else{
                       this.setState({isSyncButtonDisabled: false})
@@ -88,10 +96,7 @@ export default class Sync extends Component {
                   }else{
                     this.setState({isSyncButtonDisabled: true})
                   }
-
-                  console.log(this.state.senderCode)
                 })
-                
               }}
               maxLength={6}
               keyboardType="Numeric"
@@ -113,7 +118,7 @@ export default class Sync extends Component {
               }
               this.setState({isSyncButtonDisabled: true})
               send_request(this.state.syncingCode, ()=>{
-                this.props.navigation.navigate('Notes')
+                this.props.navigation.navigate('Notes', {has_new_note: true})
               })
             }}
             >

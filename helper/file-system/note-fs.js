@@ -15,7 +15,7 @@ const createNote = async (note_title, note_content, callback) => {
 
 const readNotes = async () => {
   const notesDirectory = `${FileSystem.documentDirectory}notes/my/`;
-  // await FileSystem.deleteAsync(notesDirectory)
+  // await FileSystem.deleteAsync(notesDirectory, {idempotent: true})
   await FileSystem.makeDirectoryAsync(notesDirectory, { intermediates: true });
 
   if((`${FileSystem.documentDirectory}notes/my/`)){  

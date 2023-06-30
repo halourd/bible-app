@@ -143,7 +143,9 @@ export default class Notes extends Component {
                         note_filename: note.fileName
 
                       })
+
                     }
+                    
                   }
                   />
                 );

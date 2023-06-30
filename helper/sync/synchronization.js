@@ -25,7 +25,7 @@ export const generate_code = (() => {
     return code;
 })
 
-const processChunk = async (message) => {
+const processChunk = async (message, callback) => {
     const receivedNoteChunks = [];
     let note_container = []
 
@@ -37,7 +37,7 @@ const processChunk = async (message) => {
 
         console.log(note_object.length)
         note_object.forEach((note, index) => {
-            note_container.push(note_object[index])
+            note_container.push(note)
         });
 
         // note_object.map((note) => {
@@ -49,18 +49,20 @@ const processChunk = async (message) => {
         const note_filename = note.fileName.split('-_-_-')[0].toString()
         createNote(note_filename, note.content)
     })
-
+    callback?callback():null
     console.log('===>',note_container)
 
 }
 
 //Listen for incoming copy request
-export const listen_for_copy = (code) => {
+export const listen_for_copy = (code, callback) => {
 
     pubnub.addListener({
         message: (event) => {
             // console.log('[RECEIVED]',event.message);
-            processChunk(event.message)
+            processChunk(event.message, ()=>{
+                callback?callback():null
+            })
 
         },
     });
@@ -100,6 +102,8 @@ export const send_request = async (code, callback) => {
             }
         });
     })
+
+    callback?callback():null
 
 }
 

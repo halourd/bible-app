@@ -112,6 +112,8 @@ export default class Notes extends Component {
                 Notes you created will be displayed here
               </Text>
               <Text style={styles.emptyNoteList}>Click + to create a note</Text>
+              <Text style={styles.emptyNoteList}></Text>
+              <Text style={styles.emptyNoteList}>Press and Hold Note to delete</Text>
             </ScrollView>
           ) : (
             <ScrollView

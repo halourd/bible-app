@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 const search_style = StyleSheet.create({
     container: {
         // marginTop: 50,
-        padding: 20
+        paddingHorizontal: 20
     },
 
     use_fontFamilyRegular: {
@@ -34,7 +34,7 @@ const search_style = StyleSheet.create({
 
     selectionContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        justifyContent: 'flex-end',
     },  
 
     searchSelectionHeader: {
@@ -43,7 +43,7 @@ const search_style = StyleSheet.create({
 
     searchSelection: {
         width: '50%',
-        marginVertical: 25,
+        marginVertical: 10,
     },
 
     searchSelectionHeaderTitle: {
@@ -54,7 +54,7 @@ const search_style = StyleSheet.create({
     selectionButton: {
         backgroundColor: '#d9d9d9',
         paddingHorizontal: 40,
-        paddingVertical: 20,
+        paddingVertical: 15,
         marginVertical: 5,
         marginHorizontal: 5,
         borderRadius: 50,
@@ -96,7 +96,7 @@ const search_style = StyleSheet.create({
     },
 
     searchButton: {
-        backgroundColor: '#203239',
+        backgroundColor: '#142E65',
         paddingHorizontal: 20,
         paddingVertical: 20,
         borderRadius: 10,
@@ -111,7 +111,13 @@ const search_style = StyleSheet.create({
     },
 
     searchResultsContainer: {
+        padding: 5,
         borderWidth: 1,
+        // margin: 65, 
+        height: '100%',
+        
+      
+
     }
 
 

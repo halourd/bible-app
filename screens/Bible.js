@@ -47,6 +47,7 @@ export default class Bible extends Component {
     };
   }
 
+
   render() {
     const onUserSwipe = (index) => {
       const newChapter = index + 1;

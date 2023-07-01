@@ -78,7 +78,7 @@ const sync_style = StyleSheet.create({
     syncButton: {
         flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor: '#203239',
+        backgroundColor: '#142E65',
         paddingVertical: 15,
         borderRadius: 10
     },
@@ -147,7 +147,7 @@ const sync_style = StyleSheet.create({
     syncButtonDisabled: {
         flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor: '#5E6B70',
+        backgroundColor: '#627398',
         paddingVertical: 15,
         borderRadius: 10
     }

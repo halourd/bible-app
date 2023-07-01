@@ -1,11 +1,20 @@
 import {Component} from 'react'
-import {View, Text, TouchableNativeFeedback, ScrollView} from 'react-native'
+import {View, Text, TouchableNativeFeedback,TouchableOpacity, ScrollView, ToastAndroid} from 'react-native'
 import uuid from 'react-native-uuid'
+
+import * as Clipboard from 'expo-clipboard'
 
 import bible_style from '../../styles/SBible';
 
 import books from '../../config/bible_books';
 export default class ChapterSlide extends Component {
+
+    copyVerse = async (verse, content) => {
+        let verse_content = `${verse}\n    ${content}`
+        await Clipboard.setStringAsync(verse_content);
+        ToastAndroid.show('Verse copied!', ToastAndroid.SHORT);
+      }
+    
     render(){
         return (
             <ScrollView
@@ -25,10 +34,16 @@ export default class ChapterSlide extends Component {
                     item.chapter == this.props.chapter_selected
                     )
                     return (
-                        <TouchableNativeFeedback
+                        <TouchableOpacity
                         onPress={() => {
                             this.setState({ verseItemSelected: true });
                         }}
+    
+                        onLongPress={()=>{
+                            this.copyVerse(`${item.book_name} ${item.chapter}:${item.verse}`, item.text)
+                        }
+
+                        }
                         >
                         <View 
                         key={`${uuid.v4()}`}
@@ -54,7 +69,7 @@ export default class ChapterSlide extends Component {
                             </Text>
                             </View>
                         </View>
-                        </TouchableNativeFeedback>
+                        </TouchableOpacity>
                     );
                 })}
                 </View>

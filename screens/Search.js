@@ -1,10 +1,12 @@
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import {Pressable, KeyboardAvoidingView, Keyboard, Text, View, TouchableOpacity, Image} from 'react-native';
+import {Pressable, KeyboardAvoidingView, Keyboard, Text, View, ScrollView, TouchableOpacity, Image} from 'react-native';
 
 import search_style from '../styles/SSearch';
 import { TextInput } from 'react-native-gesture-handler';
 import CustomHeader from '../components/CustomHeader';
+
+import books from '../config/bible_books';
 
 
 export default class Search extends Component{
@@ -22,7 +24,10 @@ export default class Search extends Component{
     render(){
         return(
             <KeyboardAvoidingView style={[search_style.container]}>
-                <CustomHeader navigation={this.props.navigation}/>
+                <CustomHeader 
+                navigation={this.props.navigation}
+                go_to_page="Bible"
+                />
                 <Pressable onPress={()=> {Keyboard.dismiss()}}>
                     {/* <View style={search_style.searchHeaderContainer}>
                         <TouchableOpacity 
@@ -38,7 +43,7 @@ export default class Search extends Component{
                     <View style={search_style.searchBodyContainer}>
                         <View style={search_style.searchBody}>
                             <View style={search_style.selectionContainer}>
-                                <View style={search_style.searchSelection}>
+                                {/* <View style={search_style.searchSelection}>
                                     <Text style={[search_style.searchSelectionHeaderTitle, search_style.use_fontFamilyRegular]}>Search at:</Text>
                                     <TouchableOpacity 
                                     activeOpacity={0.4} 
@@ -49,8 +54,8 @@ export default class Search extends Component{
                                         <Image source={require('../assets/pngs/triangle_down.png')} style={search_style.dropdownIcon}/>
                                         <Text style={[search_style.use_fontFamilyRegular, search_style.headerText]}>Entire Bible</Text>
                                     </TouchableOpacity>
-                                </View>
-                                <View style={search_style.searchSelection}>
+                                </View> */}
+                                {/* <View style={search_style.searchSelection}>
                                     <Text style={[search_style.searchSelectionHeaderTitle, search_style.use_fontFamilyRegular]}>Choose Language:</Text>
                                     <TouchableOpacity 
                                     activeOpacity={0.4} 
@@ -61,7 +66,7 @@ export default class Search extends Component{
                                         <Image source={require('../assets/pngs/triangle_down.png')} style={search_style.dropdownIcon}/>
                                         <Text style={[search_style.use_fontFamilyRegular, search_style.headerText]}>English</Text>
                                     </TouchableOpacity>
-                                </View>
+                                </View> */}
                             </View>
 
                             <View style={search_style.searchInputContainer}>
@@ -90,9 +95,9 @@ export default class Search extends Component{
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={search_style.searchResultsContainer}>
-                                
-                            </View>
+                            {/* <ScrollView contentContainerStyle={search_style.searchResultsContainer}>
+                                   
+                            </ScrollView> */}
                         </View>
                     </View>
                 </Pressable>

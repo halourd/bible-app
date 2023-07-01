@@ -22,11 +22,11 @@ export default class CustomHeader extends Component {
 
   render() {
     return (
-      <View style={header_style.headerContainer}>
+      <View style={[header_style.headerContainer, {...this.props.custom_style}]}>
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             onPress={() => {
-              this.props.on_back()
+              this.props.on_back?this.props.on_back():null
               this.props.navigation.navigate(`${this.props.go_to_page}`, {has_new_note: true})
             }}
           >

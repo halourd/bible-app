@@ -7,7 +7,8 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  ToastAndroid
+  ToastAndroid,
+  ActivityIndicator
 } from "react-native";
 
 import sync_style from "../styles/SSync";
@@ -25,7 +26,8 @@ export default class Sync extends Component {
     this.state = {
       code: generate_code(),
       syncingCode: '',
-      isSyncButtonDisabled: true
+      isSyncButtonDisabled: true,
+      onSync: false
     }
   }
 
@@ -35,7 +37,9 @@ export default class Sync extends Component {
 
   componentDidUpdate(prevProps){
     if(prevProps.route.params !== this.props.route.params){
-      
+      this.setState({code: generate_code()}, ()=>{
+        listen_for_copy(this.state.code)
+      })
     }
   }
 
@@ -60,7 +64,6 @@ export default class Sync extends Component {
       <View style={sync_style.mainContainer}>
         {/* Header Title */}
         <View style={sync_style.headerContainer}>
-          
           <TouchableOpacity
             onPress={() => { 
               remove_listener(this.state.code)
@@ -104,6 +107,8 @@ export default class Sync extends Component {
               style={sync_style.codeInputBox}
               placeholder="Enter shared code here"
             />
+
+            
             <TouchableOpacity 
             activeOpacity={0.6} 
             disabled={this.state.isSyncButtonDisabled}
@@ -116,8 +121,11 @@ export default class Sync extends Component {
                 alert('Please input shared code')
                 return
               }
-              this.setState({isSyncButtonDisabled: true})
+              
+              this.setState({onSync: true,isSyncButtonDisabled: true})
               send_request(this.state.syncingCode, ()=>{
+                remove_listener(this.state.code)
+                this.setState({onSync: false})
                 this.props.navigation.navigate('Notes', {has_new_note: true})
               })
             }}
@@ -172,7 +180,14 @@ export default class Sync extends Component {
             </View>
           </View>
         {/* <NavigationBar name="Home" navigation={this.props.navigation} /> */}
-        
+        {
+          this.state.onSync?(
+            <View style={{flex: 1, justifyContent: 'center'}}>
+              <ActivityIndicator animating={this.state.onSync} size="large" color="#142E65" />
+              <Text style={[sync_style.codeText, {paddingVertical: 20}]}>Syncing</Text>
+            </View>
+          ):null
+        }
       </View>
     );
   }

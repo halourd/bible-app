@@ -26,7 +26,7 @@ export default class ChapterSlide extends Component {
           activeOpacity={0.8}
           delayPressIn={0}
           style={bible_style.SelectionButtons}
-          onPress={this.props.on_press}
+          onPress={this.props.on_book_press}
         >
           <Text
             style={[
@@ -41,7 +41,7 @@ export default class ChapterSlide extends Component {
         <TouchableOpacity
           activeOpacity={0.8}
           style={bible_style.SelectionButtons}
-        //   onPress={() => this.setState({ isModalVisible: true })}
+          onPress={this.props.on_chapter_press}
         >
           <Text
             style={[

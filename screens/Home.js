@@ -25,12 +25,10 @@ import { setStorage } from "../helper/storage/async-storage";
 
 const style = home_style;
 
-const Item = ({ title, image, videoId }) => [
+const Item = ({ title, image, videoId }) => (
   <TouchableNativeFeedback
-    key={`${uuid.v4()}`}
     onPress={() =>
       Linking.openURL(`vnd.youtube://www.youtube.com/watch?v=${videoId}`).then(
-        console.log(getStorage("votd"))
       )
     }
   >
@@ -49,8 +47,8 @@ const Item = ({ title, image, videoId }) => [
         </Text>
       </View>
     </View>
-  </TouchableNativeFeedback>,
-];
+  </TouchableNativeFeedback>
+);
 
 export default class Home extends Component {
   constructor(props) {
@@ -139,14 +137,15 @@ export default class Home extends Component {
                 <Text style={style.vidHeader}>Videos</Text>
                 <FlatList
                   data={this.state.videos}
-                  renderItem={({ item }) => (
+                  renderItem={({ item, videoId }) => (
                     <Item
-                      key={`${uuid.v4()}`}
+                      key={videoId}
                       title={item.snippet.title}
                       image={{ uri: `${item.snippet.thumbnails.high.url}` }}
                       videoId={item.id.videoId}
                     />
                   )}
+                  key={`${uuid.v4()}`}
                   horizontal
                   contentContainerStyle={{ margin: 20 }}
                   contentInsetAdjustmentBehavior="never"
@@ -158,7 +157,6 @@ export default class Home extends Component {
                   scrollEventThrottle={1}
                   snapToInterval={300}
                   contentOffset={{ 50: 50 }}
-                  key={`Block#${uuid.v4()}`}
                 />
               </View>
               <View style={style.Selection}>

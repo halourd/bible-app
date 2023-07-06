@@ -96,19 +96,17 @@ const bible_style = StyleSheet.create({
 
     //Modal Container
     modalContainer: {   
-
+        color: 'white'
     },  
 
     modalView:  {
-        // borderWidth: 1,
-        // borderColor: 'red',
         borderRadius: 10,
         height: '70%',
 
         padding: 20,
         marginTop: '30%',
-        marginHorizontal: 40,
-        backgroundColor: '#eeedde',
+        // marginHorizontal: 40,
+        backgroundColor: '#142E65',
 
         shadowColor: "#000",
         shadowColor: "#000",
@@ -127,6 +125,7 @@ const bible_style = StyleSheet.create({
         fontSize: 21,
         marginVertical: 10,
         paddingHorizontal: 20,
+        color: 'white',
         textAlign: 'center',
         fontFamily : 'ProductSans-Bold',
     },

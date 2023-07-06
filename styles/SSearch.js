@@ -3,6 +3,8 @@ import { StyleSheet } from "react-native";
 
 const search_style = StyleSheet.create({
     container: {
+        flex: 1,
+        height: '100%',
         // marginTop: 50,
         paddingHorizontal: 20
     },
@@ -64,7 +66,10 @@ const search_style = StyleSheet.create({
     },
 
     searchInputContainer: {
-
+        display: 'flex',
+        flexDirection: 'row',
+        width:'100%',
+        justifyContent: 'space-between'
     },
 
     searchInput: {
@@ -73,6 +78,7 @@ const search_style = StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 10,
         marginBottom: 15,
+        width: '73%',
         flexDirection: 'row',
         alignItems: 'center',
     },
@@ -101,6 +107,7 @@ const search_style = StyleSheet.create({
         paddingVertical: 20,
         borderRadius: 10,
         marginBottom: 15,
+        width: '25%'
     },
 
     searchButtonText: {
@@ -111,14 +118,94 @@ const search_style = StyleSheet.create({
     },
 
     searchResultsContainer: {
-        padding: 5,
-        borderWidth: 1,
-        // margin: 65, 
+        // padding: 5,
+        // borderWidth: 1,
+        // marginBottom: '60%', 
         height: '100%',
-        
-      
+    },
 
-    }
+    resultHeaderTitleContainer: {
+        marginVertical: 10,
+        
+    },
+
+    resultHeaderText: {
+        fontFamily: 'ProductSans-Regular',
+    },
+
+    resultBlockContainer:{
+        padding: 20,
+        marginVertical: 5,
+        marginHorizontal: 5,
+        borderRadius: 10,
+        backgroundColor: "white",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    
+        elevation: 5,
+    },
+
+    resultBlockHeading: {
+        fontFamily: 'ProductSans-Bold',
+        marginVertical: 5
+    },
+
+    resultModalContainer: {
+        backgroundColor: '#142E65',
+        borderRadius: 10,
+        padding: 15
+    },
+
+    modalHeader: {
+        marginBottom: 10,
+        padding: 10,
+        borderRadius: 6,
+        backgroundColor: '#112755',
+    },
+
+    modalHeaderText: {
+        color: 'white',
+        fontSize: 19,
+        fontFamily: 'ProductSans-Bold',
+    },
+    
+    modalContent: {
+        padding: 10,
+        marginBottom: 20
+    },
+    
+    modalContentText: {
+        fontFamily: 'ProductSans-Regular',
+        color: 'white',
+        fontSize: 16
+    },
+
+    modalActionContainer: {
+
+    },
+
+    actionButton: {
+        backgroundColor: 'white',
+        paddingHorizontal: 10,
+        paddingVertical: 15,
+        borderRadius: 50,
+        margin: 5
+    },
+
+    actionText: {
+        fontFamily: 'ProductSans-Regular',
+    },
+
+    buttonImg: {
+        width: 25,
+        height: 25,
+        marginRight: 10,
+    },
 
 
 

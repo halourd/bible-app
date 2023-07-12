@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     saveButtonContainerDisabled: {
-        backgroundColor: '#8BCCA5',
+        backgroundColor: '#E83C5F',
         borderRadius: 10,
         position: 'relative',
         right: 0,

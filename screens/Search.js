@@ -43,10 +43,8 @@ export default class Search extends Component{
         Object.entries(books).forEach(([bookName]) => {
             books[`${bookName}`].forEach((book, index) => {
                 if(book.text.includes(`${word}`)){
-                    console.log(book.book_name, book.chapter, book.verse, book.text)
                     results.push({id: uuid.v4(), book_name: book.book_name, chapter: book.chapter, verse: book.verse, text: book.text})
                 }
-                // console.log(typeof book[1].book)
             });
         });
 

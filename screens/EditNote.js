@@ -66,8 +66,6 @@ export default class EditNote extends Component {
         go_to_page='Notes'
         action_for_save_button="note-update"
         navigation={this.props.navigation} 
-
-        isDisabled={this.state.save_button_disabled} 
         has_edit_button={true} 
         on_back={()=> {
             this.setState({isEditable: true})
@@ -81,6 +79,7 @@ export default class EditNote extends Component {
           this.toogleEditButton("Previewing")
         }}
         has_save_button={!this.state.isEditable}
+        edit_button_clicked={!this.state.isEditable}
         on_save={async ()=>{
           this.setState({oldFileName: await getStorage('newfilename_for_updated_note')})
           this.props.navigation.navigate('Notes', {has_note_updated: true})

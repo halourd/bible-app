@@ -83,16 +83,16 @@ export default class CustomHeader extends Component {
           
           :null}
           
-          {this.props.has_edit_button === true ? 
+          {this.props.has_edit_button === true?
             <TouchableOpacity
             disabled={this.props.isDisabled}
             activeOpacity={0.7}
             onPress={()=>{
               this.props.on_click_edit()
             }}
-            style={this.props.isDisabled?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
+            style={this.props.edit_button_clicked?header_style.saveButtonContainerDisabled:header_style.saveButtonContainer}>
               <View>
-                <Text style={header_style.saveButtonText}>Edit</Text>
+                <Text style={header_style.saveButtonText}>{this.props.edit_button_clicked?"Cancel":"Edit"}</Text>
               </View>
             </TouchableOpacity>
           

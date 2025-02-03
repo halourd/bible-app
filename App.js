@@ -13,6 +13,7 @@ import Search from './screens/Search'
 import Sync from './screens/Sync';
 import AddNote from './screens/AddNote';
 import EditNote from './screens/EditNote';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 // import navigation from './config/navigation'
 const Tab = createBottomTabNavigator();
@@ -51,84 +52,86 @@ export default class App extends Component {
       return null;
     }
   return (
-    <NavigationContainer>
-        <StatusBar style="auto" />
-        <Tab.Navigator initialRouteName='Home'>
-          <Tab.Screen 
-          name="Home" 
-          component={Home} 
-          options={{
-            headerShown: false,
-            tabBarStyle: { display: "none" },
-          }}
-          />
-          <Tab.Screen 
-          name="Bible" 
-          component={Bible}
-          options={{
-            headerShown: false,
-            tabBarStyle: { display: "none" },
-          }} 
-          />
-          <Tab.Screen 
-          name="Notes" 
-          component={Notes}
-          options={{
-            headerShown: false,
-            tabBarStyle: { display: "none" },
-          }} 
-          />
-          <Tab.Screen 
-          name="Search" 
-          component={Search}
-          options={{
-            headerShown: false,
-            tabBarStyle: { display: "none" },
-          }} 
-          
-          />
-          <Tab.Screen 
-          name="Sync" 
-          component={Sync}
-          options={{
-            headerShown: false,
-            tabBarStyle: { display: "none" },
-          }} /> 
-
-          <Tab.Screen 
-          name="Add Note" 
-          component={AddNote}
-          options={{
-            headerShown: false,
-            tabBarStyle: { display: "none" },
-          }} /> 
-
-          <Tab.Screen 
-          name="Edit Note" 
-          component={EditNote}
-          options={{
-            headerShown: false,
-            tabBarStyle: { display: "none" },
-          }} /> 
-
-
-        </Tab.Navigator>
-
-
-        {/* <Stack.Navigator initialRouteName='Home'>
-
-          <Stack.Screen 
-            name="Home"
-            component={Home}
-            options={{headerShown: false}}
-          />      
-
-          <Stack.Screen 
-            name="Bible"
+    <GestureHandlerRootView>
+      <NavigationContainer>
+          <StatusBar style="auto" />
+          <Tab.Navigator initialRouteName='Home'>
+            <Tab.Screen 
+            name="Home" 
+            component={Home} 
+            options={{
+              headerShown: false,
+              tabBarStyle: { display: "none" },
+            }}
+            />
+            <Tab.Screen 
+            name="Bible" 
             component={Bible}
-          />  
-        </Stack.Navigator> */}
-    </NavigationContainer>
+            options={{
+              headerShown: false,
+              tabBarStyle: { display: "none" },
+            }} 
+            />
+            <Tab.Screen 
+            name="Notes" 
+            component={Notes}
+            options={{
+              headerShown: false,
+              tabBarStyle: { display: "none" },
+            }} 
+            />
+            <Tab.Screen 
+            name="Search" 
+            component={Search}
+            options={{
+              headerShown: false,
+              tabBarStyle: { display: "none" },
+            }} 
+            
+            />
+            <Tab.Screen 
+            name="Sync" 
+            component={Sync}
+            options={{
+              headerShown: false,
+              tabBarStyle: { display: "none" },
+            }} /> 
+
+            <Tab.Screen 
+            name="Add Note" 
+            component={AddNote}
+            options={{
+              headerShown: false,
+              tabBarStyle: { display: "none" },
+            }} /> 
+
+            <Tab.Screen 
+            name="Edit Note" 
+            component={EditNote}
+            options={{
+              headerShown: false,
+              tabBarStyle: { display: "none" },
+            }} /> 
+
+
+          </Tab.Navigator>
+
+
+          {/* <Stack.Navigator initialRouteName='Home'>
+
+            <Stack.Screen 
+              name="Home"
+              component={Home}
+              options={{headerShown: false}}
+            />      
+
+            <Stack.Screen 
+              name="Bible"
+              component={Bible}
+            />  
+          </Stack.Navigator> */}
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 }
